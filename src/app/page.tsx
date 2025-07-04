@@ -1,15 +1,12 @@
-import AboutMe from '@/components/AboutMe';
 import Navbar from '@/components/Navbar';
-import TechStack from '@/components/TechStack';
-import WorkExperience from '@/components/WorkExperience';
 
 const Home = () => {
   return (
-    <div>
+    <div className='min-h-screen'>
       <Navbar />
-      <AboutMe />
+      {/* <AboutMe />
       <TechStack />
-      <WorkExperience />
+      <WorkExperience /> */}
     </div>
   );
 };
