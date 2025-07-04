@@ -11,6 +11,7 @@ const ZainFont = Zain({
   weight: '400',
   variable: '--font-hs',
   style: 'normal',
+  subsets: ['latin'],
 });
 
 const navbarButtons = ['Work Experience', 'Projects', 'Contact'];
