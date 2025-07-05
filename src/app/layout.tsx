@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
+import { PERSONAL_DETAILS, WORK } from '@/lib/constants';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Himanshu Sharma',
-  description: 'Front-end Software Engineer based in Gurugram, India.',
+  title: PERSONAL_DETAILS.fullName,
+  description: `${WORK.jobTitle} based in ${PERSONAL_DETAILS.address}.`,
 };
 
 export default function RootLayout({
