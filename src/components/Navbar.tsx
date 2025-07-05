@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Zain } from 'next/font/google';
 import { useState } from 'react';
-import { ModeToggle } from './theme/ModeToggle';
+import { ModeToggle } from './Theme/ModeToggle';
 import { Button } from './ui/button';
 
 const ZainFont = Zain({
