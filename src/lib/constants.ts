@@ -13,5 +13,5 @@ export const PERSONAL_DETAILS = {
 
 export const WORK = {
   jobTitle: 'Frontend Software Developer',
-  openToWork: false,
+  openToWork: true,
 };
