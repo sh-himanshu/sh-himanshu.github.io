@@ -1,6 +1,7 @@
 'use client';
 
-import { ModeToggle } from '@/components/Theme/ModeToggle';
+import { ModeToggle } from '@/components/theme/ModeToggle';
+import { PERSONAL_DETAILS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Zain } from 'next/font/google';
@@ -20,9 +21,9 @@ const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className='relative flex h-14 items-center justify-between border-b px-4'>
+    <div className='fixed flex h-16 w-full items-center justify-between border-b px-6 shadow-lg backdrop-blur-md lg:flex-row-reverse'>
       <div>
-        <span className='mr-4 hidden md:inline-block'>
+        <span className='mr-4 hidden lg:inline-block'>
           {navbarButtons.map((name, index) => (
             <Button key={index} variant='ghost'>
               {name}
@@ -31,29 +32,27 @@ const Navbar = () => {
         </span>
         <ModeToggle />
       </div>
-      <h4 className={`${ZainFont.variable} font-hs scroll-m-20 text-2xl tracking-tight`}>
-        Himanshu Sharma
+      <h4 className={`${ZainFont.variable} font-hs scroll-m-20 text-3xl font-black tracking-tight`}>
+        {PERSONAL_DETAILS.fullName}
       </h4>
 
-      <Button variant='ghost' size='icon' onClick={() => setSidebarOpen(true)}>
-        <Menu className='h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all' />
-      </Button>
+      <Menu onClick={() => setSidebarOpen(true)} className='h-[1.65rem] w-[1.65rem] lg:hidden' />
 
       <div
         className={cn(
-          'bg-sidebar fixed inset-0 z-50 flex h-screen w-screen flex-col transition-transform duration-300 ease-in-out',
+          'bg-sidebar fixed inset-0 z-50 flex h-screen w-screen flex-col pb-16 transition-transform duration-300 ease-in-out',
           {
             '-translate-x-full': !sidebarOpen,
             'translate-x-0': sidebarOpen,
           }
         )}
       >
-        <div className='flex h-14 w-full items-center justify-end px-4'>
-          <X onClick={() => setSidebarOpen(false)} className='h-[1.2rem] w-[1.2rem]' />
+        <div className='flex h-16 w-full items-center justify-end px-6'>
+          <X onClick={() => setSidebarOpen(false)} className='h-[1.65rem] w-[1.65rem]' />
         </div>
-        <span className='mt-10 flex flex-col items-center space-y-4'>
+        <span className='mt-20 flex flex-col items-center space-y-8'>
           {navbarButtons.map((name, index) => (
-            <Button className='text-lg' key={index} variant='link'>
+            <Button className='text-2xl' key={index} variant='link'>
               {name}
             </Button>
           ))}
