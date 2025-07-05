@@ -15,3 +15,11 @@ export const WORK = {
   jobTitle: 'Frontend Software Developer',
   openToWork: true,
 };
+
+export const EMPLOYMENT_TYPE = {
+  fullTime: 'Full-Time',
+  partTime: 'Part-Time',
+  intern: 'Internship',
+  contract: 'Contract',
+  freelance: 'Freelance',
+};

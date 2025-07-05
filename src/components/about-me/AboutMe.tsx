@@ -14,7 +14,7 @@ const AboutMe = () => {
         alt='profile picture'
       />
       {WORK.openToWork && <OpenToWork />}
-      <h3 className='mt-6 scroll-m-20 text-2xl font-semibold tracking-tight'>
+      <h3 className='mt-6 scroll-m-20 text-3xl font-semibold tracking-tight'>
         Hey, I'm {PERSONAL_DETAILS.firstName}.
       </h3>
       <h4 className='mt-0 scroll-m-20 text-2xl tracking-tight text-neutral-700 dark:text-neutral-400'>
