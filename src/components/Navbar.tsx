@@ -1,11 +1,11 @@
 'use client';
 
-import { ModeToggle } from '@/components/theme/ModeToggle';
 import { PERSONAL_DETAILS } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Zain } from 'next/font/google';
 import { useState } from 'react';
+import { ModeToggle } from './theme/ModeToggle';
 import { Button } from './ui/button';
 
 const ZainFont = Zain({
