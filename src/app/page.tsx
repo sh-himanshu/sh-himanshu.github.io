@@ -84,17 +84,25 @@ export default function Home() {
   return (
     <div className='min-h-svh scroll-smooth'>
       {/* Top nav */}
-      <header className='supports-[backdrop-filter]:bg-background/70 fixed inset-x-0 top-0 z-50 border-b backdrop-blur'>
-        <nav className='mx-auto flex max-w-6xl items-center justify-between px-4 py-3'>
-          <button
-            onClick={() => handleScroll('about')}
-            className='font-semibold tracking-tight transition-opacity hover:opacity-80'
-            aria-label='Go to About'
-          >
-            <span className='font-brand tracking-widest md:text-xl'>
-              {CONTACT.name.toUpperCase()}
-            </span>
-          </button>
+      <header className='supports-[backdrop-filter]:bg-background/50 fixed inset-x-0 top-0 z-50 border-b backdrop-blur'>
+        <nav className='relative mx-auto flex max-w-6xl items-center justify-between px-4 py-4.5'>
+          {/* Mobile: left edge dark mode toggle */}
+          <div className='md:hidden'>
+            <ModeToggle />
+          </div>
+
+          {/* Brand: centered on mobile, normal flow on md+ */}
+          <div className='absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0'>
+            <button
+              onClick={() => handleScroll('about')}
+              className='font-semibold tracking-tight transition-opacity hover:opacity-80'
+              aria-label='Go to About'
+            >
+              <span className='font-brand tracking-widest md:text-xl'>
+                {CONTACT.name.toUpperCase()}
+              </span>
+            </button>
+          </div>
 
           <div className='hidden items-center gap-1 md:flex'>
             {NAV_ITEMS.map((n) => (
@@ -111,10 +119,9 @@ export default function Home() {
             <ModeToggle />
           </div>
 
-          {/* Mobile nav: Mode toggle + full-width dropdown */}
+          {/* Mobile nav: right edge menu button + full-width dropdown */}
           <div className='md:hidden'>
             <div className='flex items-center gap-2'>
-              <ModeToggle />
               <DropdownMenu open={mobileOpen} onOpenChange={setMobileOpen}>
                 <DropdownMenuTrigger asChild>
                   <Button
@@ -177,11 +184,11 @@ export default function Home() {
           </Avatar>
           <h1 className='mt-6 text-3xl leading-tight font-bold sm:text-4xl md:text-5xl'>
             Hi, I’m <span className='text-primary'>{CONTACT.firstName}</span>. I craft delightful
-            web experiences.
+            web experiences. 🍦
           </h1>
           <p className='text-muted-foreground mt-4 max-w-2xl'>
             Frontend-focused full-stack engineer, shipping with modern tooling and{' '}
-            <span className='rainbow-text font-semibold'>AI-assisted workflows.</span> I keep pace
+            <span className='rainbow-text font-semibold'>AI-assisted</span> workflows. I keep pace
             with the latest best practices in performance, DX, and design systems.
           </p>
           <div className='mt-6 flex flex-wrap items-center justify-center gap-3'>
@@ -436,7 +443,7 @@ export default function Home() {
       </section>
 
       {/* Contact Me (moved last) */}
-      <section id='contact' className='mx-auto max-w-6xl px-4 pb-28 md:pb-36'>
+      <section id='contact' className='mx-auto max-w-6xl px-4 pt-16 pb-28 md:pb-36'>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
