@@ -23,29 +23,34 @@ export default function AboutSection() {
         <h1 className='mt-6 text-3xl leading-tight font-bold sm:text-4xl md:text-5xl'>
           Hi, I’m <span className='text-primary font-brand'>{CONTACT.firstName}</span>. I craft delightful web experiences. 🍦
         </h1>
-        <p className='text-muted-foreground mt-4 max-w-2xl'>
+        <p className='text-muted-foreground mt-4 max-w-2xl md:max-w-3xl'>
           Frontend-focused full-stack engineer, shipping with modern tooling and{' '}
           <span className='rainbow-text font-semibold'>AI-assisted</span> workflows. I keep pace with the latest best practices in
           performance, DX, and design systems.
         </p>
         <div className='mt-6 flex flex-wrap items-center justify-center gap-3'>
           <Button variant='outline' asChild>
-            <a href='https://github.com' target='_blank' rel='noreferrer' className='flex items-center gap-2'>
+            <a href={'https://github.com/' + CONTACT.github} target='_blank' rel='noreferrer' className='flex items-center gap-2'>
               <Github className='size-4' /> GitHub
             </a>
           </Button>
           <Button variant='outline' asChild>
-            <a href={CONTACT.linkedin} target='_blank' rel='noreferrer' className='flex items-center gap-2'>
+            <a
+              href={'https://www.linkedin.com/in/' + CONTACT.linkedin}
+              target='_blank'
+              rel='noreferrer'
+              className='flex items-center gap-2'
+            >
               <Linkedin className='size-4' /> LinkedIn
             </a>
           </Button>
-          <Button asChild>
+          <Button asChild className='rounded-full'>
             <a href={CONTACT.resumeUrl} target='_blank' rel='noreferrer' download className='flex items-center gap-2'>
               <Download className='size-4' /> Resume
             </a>
           </Button>
         </div>
-        <div className='text-muted-foreground mt-3 flex flex-wrap items-center justify-center gap-3 text-sm'>
+        <div className='text-muted-foreground mt-5 flex flex-wrap items-center justify-center gap-3 text-sm'>
           <span className='inline-flex items-center gap-1'>
             <MapPin className='size-4' /> {CONTACT.location}
           </span>

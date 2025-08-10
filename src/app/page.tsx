@@ -227,7 +227,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id='projects' className='mx-auto max-w-6xl px-4 py-16 md:pb-32'>
+      <section id='projects' className='mx-auto max-w-6xl px-4 py-16 md:py-24'>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -330,7 +330,7 @@ export default function Home() {
       </section>
 
       {/* Contact Me (moved last) */}
-      <section id='contact' className='mx-auto max-w-6xl px-4 pt-16 pb-28 md:pb-36'>
+      <section id='contact' className='md: mx-auto max-w-6xl px-4 pt-16 pb-28 md:pt-24 md:pb-36'>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
