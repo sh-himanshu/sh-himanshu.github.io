@@ -6,8 +6,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --font-poppins: var(--font-poppins);
   --font-brand: var(--font-major-mono);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -90,7 +88,7 @@
   --popover: oklch(0.16 0 0);
   --popover-foreground: oklch(0.984 0 0);
   /* Keep aqua primary for highlights */
-  --primary: oklch(0.74 0.15 196);
+  --primary: oklch(60.775% 0.10314 197.35);
   --primary-foreground: oklch(0.984 0 0);
   --secondary: oklch(0.22 0 0);
   --secondary-foreground: oklch(0.984 0 0);

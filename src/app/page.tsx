@@ -1,24 +1,22 @@
 'use client';
 
 import { ModeToggle } from '@/components/dark-mode-toggle';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import FloatingTechCloud from '@/components/floating-tech';
+import AboutSection from '@/components/sections/about';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
-import { CONTACT, EXPERIENCE, NAV_ITEMS, PROJECTS, TECH_STACK } from '@/lib/site-data';
+import { CONTACT, EXPERIENCE, NAV_ITEMS, PROJECTS, WORK_START_DATE } from '@/lib/site-data';
+import { computeYearsMonths } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import React from 'react';
 import {
+  LuArrowUp as ArrowUp,
   LuX as CloseIcon,
   LuDownload as Download,
   LuGithub as Github,
@@ -27,16 +25,6 @@ import {
   LuMapPin as MapPin,
   LuMenu as Menu,
 } from 'react-icons/lu';
-import {
-  SiAmazonwebservices,
-  SiDocker,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiPostgresql,
-  SiReact,
-  SiTailwindcss,
-  SiTypescript,
-} from 'react-icons/si';
 
 export default function Home() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -57,19 +45,8 @@ export default function Home() {
   }, []);
 
   const highlightKeywords = (text: string) => {
-    const terms = [
-      'design system',
-      'performance',
-      'SSR',
-      'GraphQL',
-      'CI',
-      'full-stack',
-      'frontend',
-    ];
-    const pattern = new RegExp(
-      `(${terms.map((t) => t.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')).join('|')})`,
-      'gi'
-    );
+    const terms = ['design system', 'performance', 'SSR', 'GraphQL', 'CI', 'full-stack', 'frontend'];
+    const pattern = new RegExp(`(${terms.map((t) => t.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')).join('|')})`, 'gi');
     return text.split(pattern).map((part, i) =>
       terms.some((t) => t.toLowerCase() === part.toLowerCase()) ? (
         <span key={i} className='text-primary font-semibold'>
@@ -98,9 +75,7 @@ export default function Home() {
               className='font-semibold tracking-tight transition-opacity hover:opacity-80'
               aria-label='Go to About'
             >
-              <span className='font-brand tracking-widest md:text-xl'>
-                {CONTACT.name.toUpperCase()}
-              </span>
+              <span className='font-brand tracking-widest md:text-xl'>{CONTACT.name}</span>
             </button>
           </div>
 
@@ -124,12 +99,7 @@ export default function Home() {
             <div className='flex items-center gap-2'>
               <DropdownMenu open={mobileOpen} onOpenChange={setMobileOpen}>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    variant='outline'
-                    size='icon'
-                    aria-label='Toggle menu'
-                    className='relative overflow-hidden'
-                  >
+                  <Button variant='outline' size='icon' aria-label='Toggle menu' className='relative overflow-hidden'>
                     <motion.span
                       key={mobileOpen ? 'close' : 'menu'}
                       initial={{ rotate: -90, opacity: 0 }}
@@ -167,74 +137,23 @@ export default function Home() {
       </header>
 
       {/* Hero / About */}
-      <section
-        id='about'
-        className='about-gradient relative mx-auto min-h-[80svh] max-w-6xl px-4 pt-32 pb-16 md:pt-36 md:pb-24'
-      >
+      <AboutSection />
+
+      {/* Tech Stack */}
+      <section id='stack' className='mx-auto max-w-6xl px-4 py-16 md:py-24'>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className='flex flex-col items-center text-center'
         >
-          <Avatar className='size-32 border shadow-sm md:size-36'>
-            <AvatarImage src='/profile.png' alt='Profile' />
-            <AvatarFallback>HN</AvatarFallback>
-          </Avatar>
-          <h1 className='mt-6 text-3xl leading-tight font-bold sm:text-4xl md:text-5xl'>
-            Hi, I’m <span className='text-primary'>{CONTACT.firstName}</span>. I craft delightful
-            web experiences. 🍦
-          </h1>
-          <p className='text-muted-foreground mt-4 max-w-2xl'>
-            Frontend-focused full-stack engineer, shipping with modern tooling and{' '}
-            <span className='rainbow-text font-semibold'>AI-assisted</span> workflows. I keep pace
-            with the latest best practices in performance, DX, and design systems.
-          </p>
-          <div className='mt-6 flex flex-wrap items-center justify-center gap-3'>
-            <Button variant='outline' asChild>
-              <a
-                href='https://github.com'
-                target='_blank'
-                rel='noreferrer'
-                className='flex items-center gap-2'
-              >
-                <Github className='size-4' /> GitHub
-              </a>
-            </Button>
-            <Button variant='outline' asChild>
-              <a
-                href={CONTACT.linkedin}
-                target='_blank'
-                rel='noreferrer'
-                className='flex items-center gap-2'
-              >
-                <Linkedin className='size-4' /> LinkedIn
-              </a>
-            </Button>
-            <Button asChild>
-              <a
-                href={CONTACT.resumeUrl}
-                target='_blank'
-                rel='noreferrer'
-                download
-                className='flex items-center gap-2'
-              >
-                <Download className='size-4' /> Resume
-              </a>
-            </Button>
-          </div>
-          <div className='text-muted-foreground mt-3 flex flex-wrap items-center justify-center gap-3 text-sm'>
-            <span className='inline-flex items-center gap-1'>
-              <MapPin className='size-4' /> {CONTACT.location}
-            </span>
-          </div>
+          <h2 className='text-primary font-brand text-2xl font-semibold md:text-3xl'>Tech Stack</h2>
+          <p className='text-muted-foreground'>Tools I enjoy using</p>
         </motion.div>
-      </section>
-
-      {/* Tech Stack */}
-      <section id='stack' className='mx-auto max-w-6xl px-4 py-16 md:py-24'>
-        <motion.div
+        <div className='relative mb-8 h-[360px] sm:h-[420px]'>
+          <FloatingTechCloud className='absolute inset-0' />
+        </div>
+        {/* <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -270,7 +189,7 @@ export default function Home() {
               );
             })}
           </div>
-        </motion.div>
+        </motion.div> */}
       </section>
 
       {/* Experience */}
@@ -281,7 +200,8 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className='text-primary text-2xl font-semibold md:text-3xl'>Work Experience</h2>
+          <h2 className='text-primary font-brand text-2xl font-semibold md:text-3xl'>Work Experience</h2>
+          <p className='text-muted-foreground'>Over {computeYearsMonths(WORK_START_DATE)} Years of Hands-On Expertise</p>
           <div className='mt-6 grid gap-4'>
             {EXPERIENCE.map((e) => (
               <Card key={e.company} className='border-l-primary border-l-4'>
@@ -295,7 +215,10 @@ export default function Home() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className='text-muted-foreground text-sm'>{highlightKeywords(e.summary)}</p>
+                  <div
+                    className='prose prose-neutral dark:prose-invert text-muted-foreground text-sm'
+                    dangerouslySetInnerHTML={{ __html: e.summary }}
+                  />
                 </CardContent>
               </Card>
             ))}
@@ -313,8 +236,8 @@ export default function Home() {
         >
           <div className='flex items-end justify-between gap-4'>
             <div>
-              <h2 className='text-primary text-2xl font-semibold md:text-3xl'>Projects</h2>
-              <p className='text-muted-foreground'>Selected work</p>
+              <h2 className='text-primary font-brand text-2xl font-semibold md:text-3xl'>Projects</h2>
+              <p className='text-muted-foreground'>Things I’ve Made</p>
             </div>
             <Tabs defaultValue='all' className='hidden sm:flex'>
               <TabsList>
@@ -326,11 +249,7 @@ export default function Home() {
           </div>
           <div className='mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2'>
             {(PROJECTS.length > 4 ? PROJECTS.slice(0, 4) : PROJECTS).map((p) => (
-              <motion.div
-                key={p.title}
-                whileHover={{ y: -4 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
+              <motion.div key={p.title} whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                 <Card className='overflow-hidden'>
                   <CardHeader>
                     <CardTitle>{p.title}</CardTitle>
@@ -338,11 +257,7 @@ export default function Home() {
                   </CardHeader>
                   <CardContent>
                     <div className='bg-muted/30 aspect-video rounded-lg border p-6'>
-                      <img
-                        src={p.image}
-                        alt='preview'
-                        className='mx-auto h-full w-auto object-contain'
-                      />
+                      <img src={p.image} alt='preview' className='mx-auto h-full w-auto object-contain' />
                     </div>
                     <div className='mt-4 flex flex-wrap gap-2'>
                       {p.tags.map((t) => (
@@ -353,22 +268,12 @@ export default function Home() {
                     </div>
                     <div className='mt-4 flex items-center gap-2'>
                       <Button asChild size='sm' variant='outline'>
-                        <a
-                          href={p.github}
-                          target='_blank'
-                          rel='noreferrer'
-                          className='flex items-center gap-2'
-                        >
+                        <a href={p.github} target='_blank' rel='noreferrer' className='flex items-center gap-2'>
                           <Github className='size-4' /> Code
                         </a>
                       </Button>
                       <Button asChild size='sm'>
-                        <a
-                          href={p.demo}
-                          target='_blank'
-                          rel='noreferrer'
-                          className='flex items-center gap-2'
-                        >
+                        <a href={p.demo} target='_blank' rel='noreferrer' className='flex items-center gap-2'>
                           <Globe className='size-4' /> Demo
                         </a>
                       </Button>
@@ -386,11 +291,7 @@ export default function Home() {
           {PROJECTS.length > 4 && showMore && (
             <div className='mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2'>
               {PROJECTS.slice(4).map((p) => (
-                <motion.div
-                  key={p.title}
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                >
+                <motion.div key={p.title} whileHover={{ y: -4 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                   <Card className='overflow-hidden'>
                     <CardHeader>
                       <CardTitle>{p.title}</CardTitle>
@@ -398,11 +299,7 @@ export default function Home() {
                     </CardHeader>
                     <CardContent>
                       <div className='bg-muted/30 aspect-video rounded-lg border p-6'>
-                        <img
-                          src={p.image}
-                          alt='preview'
-                          className='mx-auto h-full w-auto object-contain'
-                        />
+                        <img src={p.image} alt='preview' className='mx-auto h-full w-auto object-contain' />
                       </div>
                       <div className='mt-4 flex flex-wrap gap-2'>
                         {p.tags.map((t) => (
@@ -413,22 +310,12 @@ export default function Home() {
                       </div>
                       <div className='mt-4 flex items-center gap-2'>
                         <Button asChild size='sm' variant='outline'>
-                          <a
-                            href={p.github}
-                            target='_blank'
-                            rel='noreferrer'
-                            className='flex items-center gap-2'
-                          >
+                          <a href={p.github} target='_blank' rel='noreferrer' className='flex items-center gap-2'>
                             <Github className='size-4' /> Code
                           </a>
                         </Button>
                         <Button asChild size='sm'>
-                          <a
-                            href={p.demo}
-                            target='_blank'
-                            rel='noreferrer'
-                            className='flex items-center gap-2'
-                          >
+                          <a href={p.demo} target='_blank' rel='noreferrer' className='flex items-center gap-2'>
                             <Globe className='size-4' /> Demo
                           </a>
                         </Button>
@@ -450,7 +337,7 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className='text-primary text-2xl font-semibold md:text-3xl'>Contact Me</h2>
+          <h2 className='text-primary font-brand text-2xl font-semibold md:text-3xl'>Contact Me</h2>
           <div className='mt-6 grid grid-cols-1 gap-6 md:grid-cols-2'>
             <Card>
               <CardHeader>
@@ -540,10 +427,10 @@ export default function Home() {
         <Button
           aria-label='Scroll to top'
           size='icon'
-          className='fixed right-6 bottom-6 z-50'
+          className='fixed right-6 bottom-6 z-50 rounded-full'
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          ↑
+          <ArrowUp />
         </Button>
       )}
 

@@ -5,12 +5,7 @@ import * as React from 'react';
 import { LuMoon as Moon, LuSun as Sun } from 'react-icons/lu';
 
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 export function ModeToggle() {
   const { setTheme } = useTheme();

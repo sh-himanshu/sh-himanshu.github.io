@@ -4,16 +4,7 @@ export const NAV_ITEMS = [
   { id: 'contact', label: 'Contact' },
 ] as const;
 
-export const TECH_STACK = [
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Tailwind',
-  'Node.js',
-  'PostgreSQL',
-  'AWS',
-  'Docker',
-] as const;
+export const TECH_STACK = ['TypeScript', 'React', 'Next.js', 'Tailwind', 'Node.js', 'PostgreSQL', 'AWS', 'Docker'] as const;
 
 export const EXPERIENCE = [
   {
@@ -30,7 +21,11 @@ export const EXPERIENCE = [
     dates: 'Sep 2022 — Jul 2024',
     location: 'Onsite / Mumbai, India',
     logo: '/oorjan_logo.jpeg',
-    summary: 'Built SSR apps, GraphQL services, and CI pipelines.',
+    summary: `<ul class="ml-6 list-disc [&>li]:mt-2">
+        <li className="font-bold">1st level of puns: 5 gold coins</li>
+        <li>2nd level of jokes: 10 gold coins</li>
+        <li>3rd level of one-liners : 20 gold coins</li>
+      </ul>`,
   },
   {
     company: 'RaftLabs',
@@ -70,3 +65,5 @@ export const CONTACT = {
   resumeUrl: 'https://drive.google.com/file/d/1vVL9G0t-H99QSifRNha-2yAJxGdVDuiL/view?usp=sharing',
   github: 'sh-himanshu',
 };
+
+export const WORK_START_DATE = 'May 2022';
