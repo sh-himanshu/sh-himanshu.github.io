@@ -6,6 +6,10 @@
       "args": ["next-devtools-mcp@0.3.6"],
       "gallery": "https://api.mcp.github.com",
       "version": "0.3.6"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
     }
   },
   "inputs": []
