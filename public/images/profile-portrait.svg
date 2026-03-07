@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Alex Developer portrait illustration</title>
+  <desc id="desc">Abstract portrait artwork with a monogram and layered gradients.</desc>
+  <defs>
+    <linearGradient id="bg" x1="80" x2="560" y1="48" y2="592" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f172a"/>
+      <stop offset="0.55" stop-color="#111827"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="halo" x1="136" x2="502" y1="102" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8" stop-opacity="0.95"/>
+      <stop offset="0.52" stop-color="#3b82f6" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0.65"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="640" rx="64" fill="url(#bg)"/>
+  <circle cx="320" cy="250" r="164" fill="url(#halo)" opacity="0.18"/>
+  <circle cx="320" cy="230" r="114" fill="#0b1220" stroke="rgba(255,255,255,0.16)" stroke-width="10"/>
+  <path d="M176 548c28-104 90-156 144-156s116 52 144 156" fill="#0b1220" stroke="rgba(255,255,255,0.16)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M246 218c10-44 38-78 74-78 38 0 66 34 74 78-10 16-26 30-42 38-16 8-34 12-52 12-18 0-36-4-52-12-16-8-32-22-42-38Z" fill="#111827"/>
+  <rect x="166" y="418" width="308" height="112" rx="28" fill="rgba(8,15,28,0.78)" stroke="rgba(255,255,255,0.14)"/>
+  <text x="320" y="470" fill="#f8fafc" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="700" letter-spacing="8" text-anchor="middle">ALEX DEVELOPER</text>
+  <text x="320" y="510" fill="#7dd3fc" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="600" letter-spacing="6" text-anchor="middle">PRODUCT ENGINEER</text>
+</svg>

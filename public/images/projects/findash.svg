@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="120" x2="1500" y1="80" y2="860" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#042f2e"/>
+      <stop offset="0.5" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" rx="64" fill="url(#bg)"/>
+  <circle cx="1350" cy="170" r="190" fill="#34d399" opacity="0.22"/>
+  <rect x="156" y="118" width="1288" height="664" rx="42" fill="rgba(7,18,24,0.82)" stroke="rgba(255,255,255,0.12)" stroke-width="8"/>
+  <rect x="214" y="172" width="1172" height="108" rx="30" fill="rgba(255,255,255,0.05)"/>
+  <rect x="214" y="318" width="742" height="404" rx="30" fill="rgba(255,255,255,0.05)"/>
+  <rect x="994" y="318" width="392" height="188" rx="30" fill="rgba(52,211,153,0.16)" stroke="rgba(167,243,208,0.22)"/>
+  <rect x="994" y="534" width="392" height="188" rx="30" fill="rgba(255,255,255,0.05)"/>
+  <path d="M280 594c80-46 146-22 208-80 70-66 124-162 240-168 116-6 176 126 298 114" fill="none" stroke="#34d399" stroke-linecap="round" stroke-linejoin="round" stroke-width="18"/>
+  <path d="M280 642c76-30 134-18 196-64 72-54 132-136 234-142 102-6 170 96 316 92" fill="none" stroke="#14b8a6" opacity="0.78" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"/>
+  <rect x="1048" y="382" width="286" height="18" rx="9" fill="rgba(240,253,250,0.28)"/>
+  <rect x="1048" y="430" width="186" height="18" rx="9" fill="rgba(167,243,208,0.72)"/>
+  <text x="216" y="784" fill="#f8fafc" font-family="ui-sans-serif, system-ui, sans-serif" font-size="72" font-weight="700">FinDash</text>
+  <text x="218" y="836" fill="#6ee7b7" font-family="ui-sans-serif, system-ui, sans-serif" font-size="26" font-weight="600" letter-spacing="4">REAL-TIME MARKET INTELLIGENCE</text>
+</svg>
