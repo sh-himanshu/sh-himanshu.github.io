@@ -7,6 +7,10 @@ import { Tile } from "@/components/ui/tile";
 import { SITE_CONFIG } from "@/lib/data";
 import { haptic } from "@/lib/haptic/haptic";
 
+function decode(encoded: string): string {
+    return atob(encoded);
+}
+
 const FIELD_CLASS_NAME =
     "w-full rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3.5 text-sm text-zinc-100 shadow-inner shadow-black/10 transition-colors placeholder:text-zinc-500 focus:border-[#0078d4]/60 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#0078d4]/40";
 
@@ -21,16 +25,19 @@ export function ContactSection() {
         message: "",
     });
 
+    const phone = decode(SITE_CONFIG.phone);
+    const email = decode(SITE_CONFIG.email);
+
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
         const name = String(formData.get("name") ?? "").trim();
-        const email = String(formData.get("email") ?? "").trim();
+        const senderEmail = String(formData.get("email") ?? "").trim();
         const company = String(formData.get("company") ?? "").trim();
         const message = String(formData.get("message") ?? "").trim();
 
-        if (!name || !email || !message) {
+        if (!name || !senderEmail || !message) {
             setFeedback({
                 tone: "error",
                 message:
@@ -46,14 +53,14 @@ export function ContactSection() {
             message,
             "",
             `Name: ${name}`,
-            `Email: ${email}`,
+            `Email: ${senderEmail}`,
             company ? `Company: ${company}` : undefined,
         ]
             .filter(Boolean)
             .join("\n");
 
         haptic(24);
-        window.location.href = `mailto:${SITE_CONFIG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         event.currentTarget.reset();
         setFeedback({
             tone: "success",
@@ -76,11 +83,11 @@ export function ContactSection() {
                                 Email
                             </span>
                             <a
-                                href={`mailto:${SITE_CONFIG.email}`}
+                                href={`mailto:${email}`}
                                 className="flex min-w-0 items-center gap-3 text-[15px] font-semibold break-all text-zinc-100 transition-colors hover:text-white sm:break-normal"
                             >
                                 <Mail size={18} className="text-[#0078d4]" />
-                                {SITE_CONFIG.email}
+                                {email}
                             </a>
                         </div>
                         <div>
@@ -88,11 +95,11 @@ export function ContactSection() {
                                 Phone
                             </span>
                             <a
-                                href="tel:+15550000000"
+                                href={`tel:${phone.replace(/\s/g, "")}`}
                                 className="flex items-center gap-3 text-[15px] font-semibold text-zinc-100 transition-colors hover:text-white"
                             >
                                 <Phone size={18} className="text-[#0078d4]" />
-                                {SITE_CONFIG.phone}
+                                {phone}
                             </a>
                         </div>
                         <div>

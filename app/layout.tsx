@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
     title: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
     description: SITE_CONFIG.description,
+    appleWebApp: {
+        title: "Himanshu",
+    },
 };
 
 export default function RootLayout({

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Tile } from "@/components/ui/tile";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/lib/data";
 import { getIcon } from "@/lib/icons";
-import profilePortrait from "../../public/images/profile-portrait.png";
+import profilePortrait from "../../public/images/profile.jpeg";
 
 export function HeroSection() {
     return (

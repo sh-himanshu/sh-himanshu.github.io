@@ -65,16 +65,16 @@ export interface LiveTileState {
 // --- Constants ---
 
 export const SITE_CONFIG = {
-    name: "Alex Developer",
-    title: "Software Engineer",
-    location: "Seattle, WA",
-    email: "hello@example.com",
-    phone: "+1 (555) 000-0000",
+    name: "Himanshu Sharma",
+    title: "Software Developer",
+    location: "Gurugram, India",
+    email: "aGltYW5zaHUuc2gxMjIwQGdtYWlsLmNvbQ==",
+    phone: "KzkxIDgwNTgwMDk0MTU=",
     resumeUrl:
         "https://drive.google.com/uc?export=download&id=1vVL9G0t-H99QSifRNha-2yAJxGdVDuiL",
     availability: "Available for hire",
     description:
-        "Software Engineer crafting fluid digital experiences. Specializing in React, Next.js, TypeScript, and modern web technologies.",
+        "Most developers start with code. I start with understanding what actually matters to users, then build for it.\n\nOver 4+ years, I've shipped web, mobile, and desktop products used by thousands across cleantech and B2B SaaS. I'm the person who simplifies messy systems, fixes what breaks at scale, and asks \"why are we building this?\" before \"how?\"\n\nAt Birdeye, I build scalable frontend systems with React, TypeScript, and Redux Saga, along with the less visible work: performance, security, and system design.\n\nPre-AI, good engineering was about clean code.\nPost-AI, it's about speed with clarity.\n\nI use AI to move faster without cutting corners, reviewing better, shipping smarter, and operating with leverage.\n\nOpen to roles involving scalable systems, AI-driven workflows, and products where engineering meets real business impact.\n\nLet's talk: reach out via the contact form.",
 } as const;
 
 export const NAV_ITEMS: NavItem[] = [
@@ -90,22 +90,22 @@ export const SOCIAL_LINKS: SocialLink[] = [
     {
         id: "github",
         label: "GitHub",
-        href: "https://github.com",
+        href: "https://github.com/sh-himanshu",
         iconName: "Github",
         color: "solid",
     },
     {
         id: "linkedin",
         label: "LinkedIn",
-        href: "https://linkedin.com",
+        href: "https://linkedin.com/in/sh-himanshu",
         iconName: "Linkedin",
         color: "blue",
     },
     {
-        id: "twitter",
-        label: "Twitter",
-        href: "https://twitter.com",
-        iconName: "Twitter",
+        id: "x",
+        label: "X",
+        href: "https://x.com/himanshu_1220",
+        iconName: "XTwitter",
         color: "default",
     },
 ];
