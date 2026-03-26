@@ -18,14 +18,15 @@ const SIZE_CLASSES: Record<TileSize, string> = {
 };
 
 const COLOR_CLASSES: Record<TileColor, string> = {
-    default: "border-white/[0.08] bg-zinc-900/40 text-zinc-100",
-    blue: "border-[#0078d4]/30 bg-[#0078d4]/20 text-blue-50",
-    purple: "border-purple-400/20 bg-purple-900/30 text-purple-50",
-    green: "border-emerald-400/20 bg-emerald-900/30 text-emerald-50",
-    teal: "border-teal-400/20 bg-teal-900/30 text-teal-50",
-    orange: "border-orange-400/20 bg-orange-900/30 text-orange-50",
-    red: "border-rose-400/20 bg-rose-900/30 text-rose-50",
-    solid: "border-transparent bg-zinc-100 text-zinc-950",
+    default:
+        "border-black/[0.06] bg-white/55 text-zinc-900 dark:border-white/[0.08] dark:bg-zinc-900/65 dark:text-zinc-100",
+    blue: "border-[#0078d4]/20 bg-[#0078d4]/10 text-[#0058a3] dark:border-[#0078d4]/30 dark:bg-[#0078d4]/20 dark:text-blue-50",
+    purple: "border-purple-400/15 bg-purple-100/40 text-purple-900 dark:border-purple-400/20 dark:bg-purple-900/30 dark:text-purple-50",
+    green: "border-emerald-400/15 bg-emerald-100/40 text-emerald-900 dark:border-emerald-400/20 dark:bg-emerald-900/30 dark:text-emerald-50",
+    teal: "border-teal-400/15 bg-teal-100/40 text-teal-900 dark:border-teal-400/20 dark:bg-teal-900/30 dark:text-teal-50",
+    orange: "border-orange-400/15 bg-orange-100/40 text-orange-900 dark:border-orange-400/20 dark:bg-orange-900/30 dark:text-orange-50",
+    red: "border-rose-400/15 bg-rose-100/40 text-rose-900 dark:border-rose-400/20 dark:bg-rose-900/30 dark:text-rose-50",
+    solid: "border-transparent bg-zinc-900 text-zinc-100 dark:bg-zinc-100 dark:text-zinc-950",
 };
 
 interface TileProps {
@@ -127,7 +128,7 @@ export function Tile({
     const pointerProps = { onPointerMove: handlePointerMove };
 
     const sharedClasses = cn(
-        "reveal-on-scroll group relative flex min-h-0 w-full flex-col overflow-hidden rounded-[var(--tile-radius)] border backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-transform duration-300 ease-out will-change-transform md:backdrop-blur-2xl",
+        "reveal-on-scroll group relative flex min-h-0 w-full flex-col overflow-hidden rounded-[var(--tile-radius)] border backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.24)] transition-transform duration-300 ease-out md:backdrop-blur-2xl",
         "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-[radial-gradient(320px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(255,255,255,0.14),transparent_65%)] before:opacity-0 before:transition-opacity before:duration-300 before:content-['']",
         "after:pointer-events-none after:absolute after:inset-px after:rounded-[calc(var(--tile-radius)-2px)] after:border after:border-white/6 after:content-['']",
         "hover:before:opacity-100",

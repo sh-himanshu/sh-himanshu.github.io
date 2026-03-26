@@ -25,7 +25,27 @@ export function useRevealOnScroll<T extends HTMLElement>() {
             elements.forEach((element) => {
                 element.dataset.revealed = "true";
             });
-            return;
+
+            const mutation = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    for (const node of m.addedNodes) {
+                        if (!(node instanceof HTMLElement)) continue;
+                        const targets = node.matches("[data-reveal]")
+                            ? [node]
+                            : Array.from(
+                                  node.querySelectorAll<HTMLElement>(
+                                      "[data-reveal]",
+                                  ),
+                              );
+                        for (const el of targets) {
+                            el.dataset.revealed = "true";
+                        }
+                    }
+                }
+            });
+            mutation.observe(container, { childList: true, subtree: true });
+
+            return () => mutation.disconnect();
         }
 
         const observer = new IntersectionObserver(
@@ -45,10 +65,40 @@ export function useRevealOnScroll<T extends HTMLElement>() {
                 "--reveal-delay",
                 `${Math.min(index * 40, 240)}ms`,
             );
-            observer.observe(element);
+
+            const rect = element.getBoundingClientRect();
+            if (rect.bottom < 0) {
+                element.dataset.revealed = "true";
+            } else {
+                observer.observe(element);
+            }
         });
 
-        return () => observer.disconnect();
+        const mutation = new MutationObserver((mutations) => {
+            for (const m of mutations) {
+                for (const node of m.addedNodes) {
+                    if (!(node instanceof HTMLElement)) continue;
+                    const targets = node.matches("[data-reveal]")
+                        ? [node]
+                        : Array.from(
+                              node.querySelectorAll<HTMLElement>(
+                                  "[data-reveal]",
+                              ),
+                          );
+                    for (const el of targets) {
+                        if (!el.dataset.revealed) {
+                            observer.observe(el);
+                        }
+                    }
+                }
+            }
+        });
+        mutation.observe(container, { childList: true, subtree: true });
+
+        return () => {
+            observer.disconnect();
+            mutation.disconnect();
+        };
     }, []);
 
     return containerRef;

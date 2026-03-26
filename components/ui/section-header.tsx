@@ -15,7 +15,7 @@ export function SectionHeader({ title, headingId }: SectionHeaderProps) {
             >
                 {title}
             </h2>
-            <div className="mt-2 h-px flex-1 bg-linear-to-r from-white/30 via-white/5 to-transparent shadow-[0_1px_2px_rgba(255,255,255,0.1)]" />
+            <div className="mt-2 h-px flex-1 bg-linear-to-r from-white/40 via-white/10 to-transparent shadow-[0_1px_2px_rgba(255,255,255,0.1)]" />
         </div>
     );
 }

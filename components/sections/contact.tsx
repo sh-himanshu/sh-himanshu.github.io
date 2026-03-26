@@ -84,7 +84,7 @@ export function ContactSection() {
                             </span>
                             <a
                                 href={`mailto:${email}`}
-                                className="flex min-w-0 items-center gap-3 text-[15px] font-semibold break-all text-zinc-100 transition-colors hover:text-white sm:break-normal"
+                                className="flex min-w-0 items-center gap-3 text-[15px] font-semibold wrap-break-word text-zinc-100 transition-colors hover:text-white sm:break-normal"
                             >
                                 <Mail size={18} className="text-[#0078d4]" />
                                 {email}
@@ -190,8 +190,8 @@ export function ContactSection() {
                                 aria-live="polite"
                                 className={
                                     feedback.tone === "error"
-                                        ? "text-sm text-rose-300"
-                                        : "text-sm text-zinc-400"
+                                        ? "text-sm text-rose-400"
+                                        : "text-sm text-zinc-300"
                                 }
                             >
                                 {feedback.message ||
