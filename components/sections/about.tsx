@@ -1,37 +1,44 @@
 import { Tile } from "@/components/ui/tile";
 
-import { LivePrinciplesTile } from "@/components/sections/live-principles-tile";
-
 export function AboutSection() {
-  return (
-    <>
-      <Tile size="4x2" className="row-span-3 md:row-span-2">
-        <h3 className="mb-5 text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
-          Beyond the code
-        </h3>
-        <div className="space-y-4 text-base leading-relaxed font-normal text-zinc-300/90 sm:text-[17px]">
-          <p>
-            I&apos;m a frontend specialist with over 5 years of experience
-            building scalable web applications. My philosophy centers on
-            creating interfaces that feel natural, fast, and accessible under
-            real product constraints. I draw heavy inspiration from systemic
-            design languages like Microsoft&apos;s{" "}
-            <strong className="font-semibold text-white">Fluent Design</strong>{" "}
-            and Apple&apos;s HIG, but I translate those ideas into practical UI
-            systems rather than surface-level aesthetics.
-          </p>
-          <p>
-            My work usually starts with eliminating render waste, tightening
-            layout systems, and clarifying interaction states before adding new
-            surface polish. The result is UI that looks intentional and stays
-            stable on mobile, tablet, and desktop.
-          </p>
-        </div>
-      </Tile>
+    return (
+        <Tile size="6x2" className="row-span-3 md:row-span-2">
+            <div className="space-y-4 text-base leading-relaxed font-normal text-zinc-600 sm:text-[17px] dark:text-zinc-300/90">
+                <p>
+                    Most developers start with code. I start with understanding
+                    what actually matters to users, then build for it.
+                </p>
 
-      <Tile size="2x2" color="default" className="row-span-3 md:row-span-2">
-        <LivePrinciplesTile />
-      </Tile>
-    </>
-  );
+                <p>
+                    Over 4+ years, I've shipped web, mobile, and desktop
+                    products across cleantech and B2B SaaS. I'm the person who
+                    simplifies messy systems, fixes what breaks at scale, and
+                    asks "why are we building this?" before "how?"
+                </p>
+
+                <p>
+                    At Birdeye, I build scalable frontend systems serving
+                    100,000+ businesses with React, TypeScript, and Redux Saga,
+                    while also working on the less visible but crucial parts
+                    like performance, security and system design.
+                </p>
+
+                <p>
+                    Pre-AI, good engineering was about clean code. Post-AI, it's
+                    about speed with clarity.
+                </p>
+
+                <p>
+                    I use AI to move faster without cutting corners, reviewing
+                    better, shipping smarter, and operating with leverage.
+                </p>
+
+                <p>
+                    Open to roles involving scalable systems, AI-driven
+                    workflows, and products where engineering meets real
+                    business impact!
+                </p>
+            </div>
+        </Tile>
+    );
 }

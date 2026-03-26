@@ -1,538 +1,96 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f4f4f5;
-  --border-color: rgb(255 255 255 / 0.1);
-  --outline-color: rgb(120 196 255 / 0.5);
-  --page-gutter: clamp(1rem, 1vw + 0.75rem, 2rem);
-  --tile-gap: clamp(1rem, 1vw + 0.65rem, 1.5rem);
-  --tile-padding: clamp(1.1rem, 1vw + 0.85rem, 1.75rem);
-  --tile-radius: clamp(1.35rem, 0.7vw + 1.1rem, 1.75rem);
-  --section-gap: clamp(3.5rem, 8vw, 6rem);
-  --nav-offset: 5rem;
+    --background: #f8f8f8;
+    --foreground: #18181b;
+    --border-color: rgb(0 0 0 / 0.1);
+    --outline-color: rgb(0 100 180 / 0.5);
+    --page-gutter: clamp(1.25rem, 3vw + 0.5rem, 4rem);
+    --tile-gap: clamp(1rem, 1vw + 0.65rem, 1.5rem);
+    --tile-padding: clamp(1.1rem, 1vw + 0.85rem, 1.75rem);
+    --tile-radius: clamp(1.35rem, 0.7vw + 1.1rem, 1.75rem);
+    --section-gap: clamp(3.5rem, 8vw, 6rem);
+    --nav-offset: 5rem;
+}
+
+.dark {
+    --background: #050505;
+    --foreground: #f4f4f5;
+    --border-color: rgb(255 255 255 / 0.1);
+    --outline-color: rgb(120 196 255 / 0.5);
 }
 
 * {
-  box-sizing: border-box;
-  border-color: var(--border-color);
-  outline-color: var(--outline-color);
+    box-sizing: border-box;
+    border-color: var(--border-color);
+    outline-color: var(--outline-color);
 }
 
 html {
-  font-family: var(--font-sans), var(--font-geist-sans), system-ui, sans-serif;
-  scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-offset) + 1rem);
+    font-family:
+        var(--font-sans), var(--font-geist-sans), system-ui, sans-serif;
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-offset) + 1rem);
+    background: var(--background);
 }
 
 body {
-  margin: 0;
-  min-height: 100%;
-  overflow-x: clip;
-  background: var(--background);
-  color: var(--foreground);
-  text-rendering: optimizeLegibility;
+    margin: 0;
+    min-height: 100%;
+    overflow-x: clip;
+    background: transparent;
+    color: var(--foreground);
+    text-rendering: optimizeLegibility;
 }
 
 code,
 pre {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 img,
 svg,
 video,
 canvas {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 p,
 li {
-  overflow-wrap: anywhere;
+    overflow-wrap: anywhere;
 }
 
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translate3d(0, 1rem, 0);
-  transition:
-    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
+    opacity: 0;
+    transform: translate3d(0, 1rem, 0);
+    transition:
+        opacity 420ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal-on-scroll[data-revealed="true"] {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-.hero-pattern-surface {
-  border: 1px solid rgb(255 255 255 / 0.05);
-  background:
-    radial-gradient(circle at 16% 18%, rgb(0 120 212 / 0.26), transparent 24%),
-    radial-gradient(
-      circle at 84% 16%,
-      rgb(103 232 249 / 0.12),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 50% 100%,
-      rgb(20 184 166 / 0.08),
-      transparent 36%
-    ),
-    linear-gradient(
-      180deg,
-      rgb(7 14 24 / 0.78) 0%,
-      rgb(5 5 5 / 0.2) 54%,
-      rgb(5 5 5 / 0.68) 100%
-    );
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.06),
-    0 24px 80px rgb(0 0 0 / 0.22);
-}
-
-.hero-pattern-mesh {
-  opacity: 0.26;
-  background-image:
-    linear-gradient(rgb(120 196 255 / 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(120 196 255 / 0.12) 1px, transparent 1px),
-    linear-gradient(
-      135deg,
-      transparent 0%,
-      rgb(255 255 255 / 0.05) 48%,
-      transparent 52%
-    );
-  background-size:
-    clamp(3.25rem, 7vw, 5.75rem) clamp(3.25rem, 7vw, 5.75rem),
-    clamp(3.25rem, 7vw, 5.75rem) clamp(3.25rem, 7vw, 5.75rem),
-    100% 100%;
-  background-position: center;
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    black 58%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(circle at center, black 58%, transparent 100%);
-}
-
-.hero-pattern-rings {
-  opacity: 0.42;
-  background:
-    radial-gradient(
-      circle at 78% 34%,
-      transparent 0 4.35rem,
-      rgb(96 165 250 / 0.22) 4.35rem 4.55rem,
-      transparent 4.55rem 100%
-    ),
-    radial-gradient(
-      circle at 78% 34%,
-      transparent 0 6.2rem,
-      rgb(255 255 255 / 0.05) 6.2rem 6.34rem,
-      transparent 6.34rem 100%
-    ),
-    radial-gradient(
-      circle at 22% 72%,
-      transparent 0 5.1rem,
-      rgb(45 212 191 / 0.14) 5.1rem 5.28rem,
-      transparent 5.28rem 100%
-    ),
-    radial-gradient(
-      circle at 52% 62%,
-      transparent 0 8.25rem,
-      rgb(255 255 255 / 0.04) 8.25rem 8.36rem,
-      transparent 8.36rem 100%
-    );
-  -webkit-mask-image: radial-gradient(
-    circle at center,
-    black 62%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(circle at center, black 62%, transparent 100%);
-}
-
-.hero-pattern-beam {
-  opacity: 0.18;
-  background:
-    linear-gradient(
-      118deg,
-      transparent 26%,
-      rgb(104 199 255 / 0.24) 47%,
-      rgb(104 199 255 / 0.04) 58%,
-      transparent 73%
-    ),
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgb(255 255 255 / 0.04) 50%,
-      transparent 100%
-    );
-  mix-blend-mode: screen;
-  animation: hero-pattern-drift 18s ease-in-out infinite alternate;
-}
-
-.hero-card-pattern-glow {
-  background:
-    radial-gradient(
-      circle at 14% 74%,
-      rgb(255 255 255 / 0.14),
-      transparent 20%
-    ),
-    radial-gradient(circle at 72% 24%, rgb(0 120 212 / 0.2), transparent 18%),
-    radial-gradient(
-      circle at 84% 40%,
-      rgb(104 199 255 / 0.18),
-      transparent 28%
-    ),
-    radial-gradient(circle at 76% 76%, rgb(45 212 191 / 0.08), transparent 24%),
-    linear-gradient(
-      120deg,
-      rgb(255 255 255 / 0.025) 0%,
-      transparent 34%,
-      transparent 100%
-    );
-}
-
-.hero-card-pattern-grid {
-  opacity: 0.28;
-  background-image:
-    linear-gradient(rgb(120 196 255 / 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(120 196 255 / 0.12) 1px, transparent 1px),
-    linear-gradient(rgb(120 196 255 / 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(120 196 255 / 0.04) 1px, transparent 1px);
-  background-size:
-    2.85rem 2.85rem,
-    2.85rem 2.85rem,
-    0.7125rem 0.7125rem,
-    0.7125rem 0.7125rem;
-  background-position: center;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(0 0 0 / 0.08) 34%,
-    rgb(0 0 0 / 0.7) 62%,
-    black 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgb(0 0 0 / 0.08) 34%,
-    rgb(0 0 0 / 0.7) 62%,
-    black 100%
-  );
-}
-
-.hero-card-pattern-hud {
-  opacity: 0.8;
-  background:
-    linear-gradient(90deg, rgb(104 199 255 / 0.55), rgb(104 199 255 / 0.08))
-      2rem 2rem / 8rem 1px no-repeat,
-    linear-gradient(180deg, rgb(104 199 255 / 0.5), transparent) 2rem 2rem / 1px
-      4.2rem no-repeat,
-    linear-gradient(90deg, transparent, rgb(45 212 191 / 0.4))
-      calc(100% - 13rem) calc(100% - 2.3rem) / 10rem 1px no-repeat,
-    linear-gradient(180deg, transparent, rgb(45 212 191 / 0.32))
-      calc(100% - 2.3rem) calc(100% - 6rem) / 1px 3.8rem no-repeat,
-    linear-gradient(90deg, transparent, rgb(104 199 255 / 0.32))
-      calc(100% - 19rem) 3.2rem / 6rem 1px no-repeat,
-    radial-gradient(
-      circle at 23% 24%,
-      rgb(104 199 255 / 0.7) 0 1.5px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 77% 69%,
-      rgb(45 212 191 / 0.6) 0 1.5px,
-      transparent 2px
-    ),
-    radial-gradient(
-      circle at 72% 28%,
-      rgb(255 255 255 / 0.45) 0 1px,
-      transparent 1.75px
-    );
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 0.88) 0%,
-    black 82%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 0.88) 0%,
-    black 82%,
-    transparent 100%
-  );
-}
-
-.hero-card-pattern-orbit {
-  opacity: 0.82;
-  background:
-    radial-gradient(
-      circle at 82% 42%,
-      rgb(7 14 24 / 0.5) 0 1.05rem,
-      transparent 1.05rem 100%
-    ),
-    conic-gradient(
-      from 210deg at 82% 42%,
-      transparent 0deg 26deg,
-      rgb(104 199 255 / 0.26) 26deg 62deg,
-      transparent 62deg 144deg,
-      rgb(104 199 255 / 0.14) 144deg 190deg,
-      transparent 190deg 266deg,
-      rgb(45 212 191 / 0.16) 266deg 306deg,
-      transparent 306deg 360deg
-    ),
-    radial-gradient(
-      circle at 82% 42%,
-      transparent 0 3.25rem,
-      rgb(96 165 250 / 0.34) 3.25rem 3.46rem,
-      transparent 3.46rem 100%
-    ),
-    radial-gradient(
-      circle at 82% 42%,
-      transparent 0 5rem,
-      rgb(255 255 255 / 0.16) 5rem 5.12rem,
-      transparent 5.12rem 100%
-    ),
-    radial-gradient(
-      circle at 82% 42%,
-      transparent 0 6.8rem,
-      rgb(45 212 191 / 0.12) 6.8rem 6.94rem,
-      transparent 6.94rem 100%
-    ),
-    linear-gradient(180deg, transparent 0%, rgb(255 255 255 / 0.06) 100%);
-  -webkit-mask-image: radial-gradient(
-    circle at 82% 42%,
-    transparent 0 2.15rem,
-    black 2.15rem 7.1rem,
-    transparent 7.1rem 100%
-  );
-  mask-image: radial-gradient(
-    circle at 82% 42%,
-    transparent 0 2.15rem,
-    black 2.15rem 7.1rem,
-    transparent 7.1rem 100%
-  );
-}
-
-.hero-card-pattern-scan {
-  opacity: 0.36;
-  background:
-    linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 61%,
-      rgb(104 199 255 / 0.16) 67%,
-      rgb(104 199 255 / 0.05) 72%,
-      transparent 78%
-    ),
-    repeating-linear-gradient(
-      180deg,
-      transparent 0 11px,
-      rgb(104 199 255 / 0.035) 11px 12px
-    ),
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgb(255 255 255 / 0.03) 50%,
-      transparent 100%
-    );
-  mix-blend-mode: screen;
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 44%,
-    rgb(0 0 0 / 0.5) 68%,
-    black 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 44%,
-    rgb(0 0 0 / 0.5) 68%,
-    black 100%
-  );
-  animation: hero-card-scan 14s ease-in-out infinite alternate;
-}
-
-@keyframes pulse-slow {
-  0%,
-  100% {
-    opacity: 0.35;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes pulse-slower {
-  0%,
-  100% {
-    opacity: 0.28;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: scale(1.08);
-  }
-}
-
-@keyframes hero-pattern-drift {
-  0% {
-    transform: translate3d(-1.5%, 0, 0) scale(1);
-  }
-
-  100% {
-    transform: translate3d(1.5%, -2%, 0) scale(1.04);
-  }
-}
-
-@keyframes hero-card-scan {
-  0% {
-    transform: translate3d(-1%, 0, 0);
-  }
-
-  100% {
-    transform: translate3d(1.5%, 0, 0);
-  }
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
 }
 
 @media (max-width: 767px) {
-  .hero-pattern-surface {
-    background:
-      radial-gradient(
-        circle at 20% 20%,
-        rgb(0 120 212 / 0.22),
-        transparent 22%
-      ),
-      radial-gradient(
-        circle at 82% 18%,
-        rgb(103 232 249 / 0.1),
-        transparent 20%
-      ),
-      linear-gradient(
-        180deg,
-        rgb(7 14 24 / 0.72) 0%,
-        rgb(5 5 5 / 0.14) 52%,
-        rgb(5 5 5 / 0.64) 100%
-      );
-  }
+    html {
+        scroll-behavior: auto;
+    }
 
-  .hero-pattern-mesh,
-  .hero-pattern-rings {
-    opacity: 0.22;
-  }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+    }
 
-  .hero-pattern-beam {
-    opacity: 0.14;
-  }
-
-  .hero-card-pattern-grid {
-    opacity: 0.2;
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 50%,
-      rgb(0 0 0 / 0.55) 72%,
-      black 100%
-    );
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 50%,
-      rgb(0 0 0 / 0.55) 72%,
-      black 100%
-    );
-  }
-
-  .hero-card-pattern-hud {
-    opacity: 0.62;
-    background:
-      linear-gradient(90deg, rgb(104 199 255 / 0.42), rgb(104 199 255 / 0.04))
-        1.25rem 1.3rem / 5rem 1px no-repeat,
-      linear-gradient(180deg, rgb(104 199 255 / 0.36), transparent) 1.25rem
-        1.3rem / 1px 3rem no-repeat,
-      linear-gradient(90deg, transparent, rgb(45 212 191 / 0.26))
-        calc(100% - 9rem) calc(100% - 1.8rem) / 6.5rem 1px no-repeat,
-      radial-gradient(
-        circle at 74% 26%,
-        rgb(255 255 255 / 0.36) 0 1px,
-        transparent 1.6px
-      ),
-      radial-gradient(
-        circle at 20% 24%,
-        rgb(104 199 255 / 0.54) 0 1.35px,
-        transparent 1.9px
-      );
-  }
-
-  .hero-card-pattern-orbit {
-    opacity: 0.74;
-    background:
-      radial-gradient(
-        circle at 82% 30%,
-        rgb(7 14 24 / 0.44) 0 0.8rem,
-        transparent 0.8rem 100%
-      ),
-      conic-gradient(
-        from 205deg at 82% 30%,
-        transparent 0deg 34deg,
-        rgb(104 199 255 / 0.2) 34deg 66deg,
-        transparent 66deg 168deg,
-        rgb(45 212 191 / 0.14) 168deg 204deg,
-        transparent 204deg 360deg
-      ),
-      radial-gradient(
-        circle at 82% 30%,
-        transparent 0 2.15rem,
-        rgb(96 165 250 / 0.28) 2.15rem 2.3rem,
-        transparent 2.3rem 100%
-      ),
-      radial-gradient(
-        circle at 82% 30%,
-        transparent 0 3.55rem,
-        rgb(255 255 255 / 0.12) 3.55rem 3.66rem,
-        transparent 3.66rem 100%
-      );
-    -webkit-mask-image: radial-gradient(
-      circle at 82% 30%,
-      transparent 0 1.35rem,
-      black 1.35rem 4.15rem,
-      transparent 4.15rem 100%
-    );
-    mask-image: radial-gradient(
-      circle at 82% 30%,
-      transparent 0 1.35rem,
-      black 1.35rem 4.15rem,
-      transparent 4.15rem 100%
-    );
-  }
-
-  .hero-card-pattern-scan {
-    opacity: 0.22;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
-    transition-duration: 1ms !important;
-  }
-
-  .reveal-on-scroll {
-    opacity: 1;
-    transform: none;
-  }
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
 }
