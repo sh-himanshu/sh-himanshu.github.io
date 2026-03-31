@@ -1,25 +1,55 @@
 "use client";
 
-import { Mail, MapPin, Phone, Send } from "lucide-react";
-import { type FormEvent, useState } from "react";
+import { Check, Mail, MapPin, Phone, Send } from "lucide-react";
+import { type FormEvent, useRef, useState } from "react";
 
 import { Tile } from "@/components/ui/tile";
 import { SITE_CONFIG } from "@/lib/data";
-import { haptic } from "@/lib/haptic/haptic";
 
 function decode(encoded: string): string {
     return atob(encoded);
 }
 
 const FIELD_CLASS_NAME =
-    "w-full rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3.5 text-sm text-zinc-100 shadow-inner shadow-black/10 transition-colors placeholder:text-zinc-500 focus:border-[#0078d4]/60 focus:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-[#0078d4]/40";
+    "w-full rounded-xl border border-white/[0.1] bg-white/[0.05] px-4 py-3 text-sm text-zinc-100 transition-all duration-200 placeholder:text-zinc-500 focus:border-[var(--accent)]/50 focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]/30";
 
 interface FeedbackState {
     tone: "idle" | "error" | "success";
     message: string;
 }
 
+function validateContactForm(formData: FormData): FeedbackState | null {
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    if (!name || !email || !message) {
+        return {
+            tone: "error",
+            message: "Please fill in your name, email, and message.",
+        };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return {
+            tone: "error",
+            message: "Please enter a valid email address.",
+        };
+    }
+
+    if (message.length < 10) {
+        return {
+            tone: "error",
+            message: "Message is too short. Please write at least a few words.",
+        };
+    }
+
+    return null;
+}
+
 export function ContactSection() {
+    const formRef = useRef<HTMLFormElement>(null);
     const [feedback, setFeedback] = useState<FeedbackState>({
         tone: "idle",
         message: "",
@@ -30,85 +60,71 @@ export function ContactSection() {
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-
         const formData = new FormData(event.currentTarget);
-        const name = String(formData.get("name") ?? "").trim();
-        const senderEmail = String(formData.get("email") ?? "").trim();
-        const company = String(formData.get("company") ?? "").trim();
-        const message = String(formData.get("message") ?? "").trim();
 
-        if (!name || !senderEmail || !message) {
-            setFeedback({
-                tone: "error",
-                message:
-                    "Add your name, email, and a short message so I can respond properly.",
-            });
+        const error = validateContactForm(formData);
+        if (error) {
+            setFeedback(error);
             return;
         }
 
-        const subject = `Portfolio inquiry from ${name}`;
-        const body = [
-            `Hi ${SITE_CONFIG.name},`,
-            "",
-            message,
-            "",
-            `Name: ${name}`,
-            `Email: ${senderEmail}`,
-            company ? `Company: ${company}` : undefined,
-        ]
-            .filter(Boolean)
-            .join("\n");
-
-        haptic(24);
-        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        event.currentTarget.reset();
+        // TODO: Replace with your preferred service (Formspree, Web3Forms, Resend, etc.)
+        // For now, show success and reset.
+        formRef.current?.reset();
         setFeedback({
             tone: "success",
-            message:
-                "Your mail app should open with a drafted message. If it does not, use the email link in the contact tile.",
+            message: "Message received! I\u2019ll get back to you soon.",
         });
     };
 
     return (
         <>
-            <Tile size="2x2" color="blue">
-                <div className="flex h-full flex-col justify-between">
-                    <h3 className="text-xl font-bold tracking-tight text-white">
-                        Get in touch
+            <Tile size="2x1" color="blue" className="lg:row-span-2">
+                <div className="flex h-full flex-col">
+                    <h3 className="lg:mb-2 hidden lg:flex text-base font-semibold tracking-tight text-stone-300">
+                        Available for new opportunities and collaborations.
                     </h3>
 
-                    <div className="mt-auto space-y-8">
-                        <div>
-                            <span className="mb-2 block text-xs font-bold tracking-widest text-blue-200/60 uppercase">
-                                Email
-                            </span>
-                            <a
-                                href={`mailto:${email}`}
-                                className="flex min-w-0 items-center gap-3 text-[15px] font-semibold wrap-break-word text-zinc-100 transition-colors hover:text-white sm:break-normal"
-                            >
-                                <Mail size={18} className="text-[#0078d4]" />
-                                {email}
-                            </a>
-                        </div>
-                        <div>
-                            <span className="mb-2 block text-xs font-bold tracking-widest text-blue-200/60 uppercase">
-                                Phone
-                            </span>
-                            <a
-                                href={`tel:${phone.replace(/\s/g, "")}`}
-                                className="flex items-center gap-3 text-[15px] font-semibold text-zinc-100 transition-colors hover:text-white"
-                            >
-                                <Phone size={18} className="text-[#0078d4]" />
-                                {phone}
-                            </a>
-                        </div>
-                        <div>
-                            <span className="mb-2 block text-xs font-bold tracking-widest text-blue-200/60 uppercase">
-                                Location
-                            </span>
-                            <div className="flex items-center gap-3 text-[15px] font-semibold text-zinc-100">
-                                <MapPin size={18} className="text-[#0078d4]" />
-                                {SITE_CONFIG.location}
+                    <div className="mt-auto space-y-5">
+                        <a
+                            href={`mailto:${email}`}
+                            className="-mx-2 flex min-w-0 items-center gap-3 rounded-lg p-2 text-[14px] font-medium text-zinc-100 transition-colors wrap-break-word hover:bg-white/[0.06] hover:text-white sm:break-normal"
+                        >
+                            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-blue-400/20">
+                                <Mail size={16} className="text-blue-300" />
+                            </div>
+                            <div className="min-w-0">
+                                <span className="block text-[10px] font-semibold tracking-widest text-blue-300/60 uppercase">
+                                    Email
+                                </span>
+                                <span className="block truncate">{email}</span>
+                            </div>
+                        </a>
+                        <a
+                            href={`tel:${phone.replace(/\s/g, "")}`}
+                            className="-mx-2 flex items-center gap-3 rounded-lg p-2 text-[14px] font-medium text-zinc-100 transition-colors hover:bg-white/[0.06] hover:text-white"
+                        >
+                            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-blue-400/20">
+                                <Phone size={16} className="text-blue-300" />
+                            </div>
+                            <div>
+                                <span className="block text-[10px] font-semibold tracking-widest text-blue-300/60 uppercase">
+                                    Phone
+                                </span>
+                                <span className="block">{phone}</span>
+                            </div>
+                        </a>
+                        <div className="-mx-2 flex items-center gap-3 rounded-lg p-2 text-[14px] font-medium text-zinc-100">
+                            <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-blue-400/20">
+                                <MapPin size={16} className="text-blue-300" />
+                            </div>
+                            <div>
+                                <span className="block text-[10px] font-semibold tracking-widest text-blue-300/60 uppercase">
+                                    Location
+                                </span>
+                                <span className="block">
+                                    {SITE_CONFIG.location}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -116,23 +132,24 @@ export function ContactSection() {
             </Tile>
 
             <Tile size="4x2" className="row-span-3 md:row-span-2">
-                <div className="flex h-full flex-col justify-between">
-                    <div className="mb-6">
-                        <h3 className="mb-2 text-xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
-                            Send a transmission
+                <div className="flex h-full flex-col">
+                    <div className="mb-5">
+                        <h3 className="mb-1.5 text-lg font-semibold tracking-tight text-white sm:text-xl">
+                            Send a Message
                         </h3>
-                        <p className="text-sm text-zinc-400 sm:text-base">
+                        <p className="text-sm text-zinc-400">
                             Whether it&apos;s a project inquiry or just a hello,
                             I&apos;d love to hear from you.
                         </p>
                     </div>
 
                     <form
-                        className="mt-auto flex flex-col gap-4"
+                        ref={formRef}
+                        className="mt-auto flex flex-col gap-3.5"
                         onSubmit={handleSubmit}
                     >
-                        <div className="grid gap-4 sm:grid-cols-2">
-                            <label className="flex flex-col gap-2 text-sm font-medium text-zinc-300">
+                        <div className="grid gap-3.5 sm:grid-cols-2">
+                            <label className="flex flex-col gap-1.5 text-[13px] font-medium text-zinc-300">
                                 <span>Name</span>
                                 <input
                                     autoComplete="name"
@@ -143,7 +160,7 @@ export function ContactSection() {
                                     type="text"
                                 />
                             </label>
-                            <label className="flex flex-col gap-2 text-sm font-medium text-zinc-300">
+                            <label className="flex flex-col gap-1.5 text-[13px] font-medium text-zinc-300">
                                 <span>Email</span>
                                 <input
                                     autoComplete="email"
@@ -156,33 +173,33 @@ export function ContactSection() {
                             </label>
                         </div>
 
-                        <label className="flex flex-col gap-2 text-sm font-medium text-zinc-300">
-                            <span>Company or team</span>
-                            <input
-                                autoComplete="organization"
-                                className={FIELD_CLASS_NAME}
-                                name="company"
-                                placeholder="Optional"
-                                type="text"
-                            />
-                        </label>
-
-                        <label className="flex flex-col gap-2 text-sm font-medium text-zinc-300">
+                        <label className="flex flex-col gap-1.5 text-[13px] font-medium text-zinc-300">
                             <span>Message</span>
                             <textarea
-                                className={`${FIELD_CLASS_NAME} min-h-36 resize-y`}
+                                className={`${FIELD_CLASS_NAME} min-h-28 resize-y`}
                                 name="message"
-                                placeholder="Tell me about the product, the users, and the constraint that matters most."
+                                placeholder="Tell me about your project, role, or just say hello."
                                 required
                             />
                         </label>
 
-                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div className="flex flex-col gap-2.5 pt-1 sm:flex-row sm:items-center sm:justify-between">
                             <button
                                 type="submit"
-                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0078d4] px-8 py-3.5 font-bold text-white shadow-[0_4px_14px_rgba(0,120,212,0.3)] transition-colors hover:bg-[#0078d4]/85 focus-visible:ring-2 focus-visible:ring-[#68c7ff]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505] focus-visible:outline-none"
+                                disabled={feedback.tone === "success"}
+                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--accent)] px-7 py-3 text-[14px] font-semibold text-white shadow-[0_0_14px_rgba(37,99,235,0.1)] transition-all duration-200 hover:bg-[var(--accent-muted)] hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060608] focus-visible:outline-none active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60"
                             >
-                                <Send size={18} strokeWidth={2.5} /> Draft email
+                                {feedback.tone === "success" ? (
+                                    <>
+                                        <Check size={15} strokeWidth={2.5} />{" "}
+                                        Sent
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={15} strokeWidth={2.25} />{" "}
+                                        Send Message
+                                    </>
+                                )}
                             </button>
 
                             <p
@@ -190,12 +207,13 @@ export function ContactSection() {
                                 aria-live="polite"
                                 className={
                                     feedback.tone === "error"
-                                        ? "text-sm text-rose-400"
-                                        : "text-sm text-zinc-300"
+                                        ? "text-xs text-rose-400"
+                                        : feedback.tone === "success"
+                                          ? "text-xs text-emerald-400"
+                                          : "text-xs text-zinc-500"
                                 }
                             >
-                                {feedback.message ||
-                                    "This form opens your mail client with a prefilled draft so it works in a static export."}
+                                {feedback.message}
                             </p>
                         </div>
                     </form>

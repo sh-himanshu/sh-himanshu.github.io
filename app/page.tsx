@@ -13,15 +13,17 @@ import { ProjectsSection } from "@/components/sections/projects";
 
 import { PAGE_GRID_CLASS, PageSection } from "@/components/ui/page-section";
 import { RevealContainer } from "@/components/ui/reveal-container";
+import { getProjects } from "@/lib/projects";
 
-export default function Home() {
+export default async function Home() {
+    const projects = await getProjects();
     return (
-        <div className="min-h-screen overflow-x-hidden text-zinc-800 selection:bg-[#0078d4]/40 selection:text-white dark:text-zinc-200">
+        <div className="min-h-screen overflow-x-hidden text-zinc-800 selection:bg-[var(--accent)]/30 selection:text-white dark:text-zinc-200">
             <Background />
 
             <Navbar />
 
-            <main className="relative z-10 mx-auto w-full max-w-6xl px-(--page-gutter) pt-[calc(var(--nav-offset)+2.5rem)] pb-24 sm:pb-32">
+            <main className="relative z-10 mx-auto w-full max-w-[68rem] px-(--page-gutter) pt-[calc(var(--nav-offset)+2.5rem)] pb-24 sm:pb-32">
                 <RevealContainer>
                     <section
                         id="hero"
@@ -36,26 +38,31 @@ export default function Home() {
                         </div>
                     </section>
 
-                    <PageSection id="about" title="01. About">
+                    <PageSection id="about" title="About" number="01">
                         <AboutSection />
                     </PageSection>
 
                     <PageSection
                         id="projects"
-                        title="02. Selected Works"
+                        title="Projects"
+                        number="02"
                         gridClassName="!grid-cols-1 !auto-rows-auto md:!grid-cols-2 lg:!grid-cols-3"
                     >
-                        <ProjectsSection />
+                        <ProjectsSection projects={projects} />
                     </PageSection>
 
                     <ExperienceExpandedProvider>
-                        <PageSection id="experience" title="03. Experience">
+                        <PageSection
+                            id="experience"
+                            title="Experience"
+                            number="03"
+                        >
                             <ExperienceCards />
                         </PageSection>
                         <ExperienceToggle />
                     </ExperienceExpandedProvider>
 
-                    <PageSection id="contact" title="04. Connect">
+                    <PageSection id="contact" title="Contact" number="04">
                         <ContactSection />
                     </PageSection>
                 </RevealContainer>

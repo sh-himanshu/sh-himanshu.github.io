@@ -40,18 +40,17 @@ export function Navbar() {
     }, []);
 
     return (
-        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-(--page-gutter) pt-4 md:pt-6">
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-(--page-gutter) pt-4 md:pt-5">
             <nav
                 aria-label="Primary"
                 className={cn(
-                    "pointer-events-auto mx-auto w-fit rounded-full border px-2 py-2 backdrop-blur-xl transition-all duration-300 ease-out md:backdrop-blur-2xl",
-                    "border-white/10 bg-zinc-900/72 shadow-[0_10px_40px_rgba(0,0,0,0.35)]",
+                    "pointer-events-auto mx-auto w-fit rounded-2xl border px-1.5 py-1.5 backdrop-blur-2xl transition-all duration-300 ease-out",
                     isScrolled
-                        ? "translate-y-0"
-                        : "md:border-white/5 md:bg-zinc-950/40 md:shadow-[0_6px_24px_rgba(0,0,0,0.2)]",
+                        ? "border-white/[0.08] bg-zinc-900/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]"
+                        : "border-white/[0.04] bg-zinc-950/50 shadow-[0_4px_16px_rgba(0,0,0,0.2)]",
                 )}
             >
-                <ul className="relative flex items-center justify-center gap-1 px-0 py-0 md:gap-2">
+                <ul className="relative flex items-center justify-center gap-0.5 px-0 py-0 md:gap-1">
                     {NAV_ITEMS.map((item) => {
                         const Icon = getIcon(item.iconName);
                         const isActive = activeSection === item.id;
@@ -64,18 +63,21 @@ export function Navbar() {
                                         isActive ? "location" : undefined
                                     }
                                     className={cn(
-                                        "flex items-center justify-center gap-2 rounded-full px-3 py-2 transition-all duration-200 focus-visible:ring-2 focus-visible:outline-none md:px-4",
-                                        "focus-visible:ring-[#68c7ff]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]",
+                                        "flex items-center justify-center gap-2 rounded-xl px-3 py-2 transition-all duration-200 focus-visible:ring-2 focus-visible:outline-none md:px-3.5",
+                                        "focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060608]",
                                         isActive
-                                            ? "border border-[#0078d4]/30 bg-[#0078d4]/20 text-blue-50 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
-                                            : "text-zinc-400 hover:bg-white/5 hover:text-zinc-100",
+                                            ? "bg-white/[0.1] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                                            : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-300",
                                     )}
                                     onClick={() => haptic(16)}
                                 >
-                                    <Icon size={18} />
+                                    <Icon
+                                        size={17}
+                                        strokeWidth={isActive ? 2.25 : 1.75}
+                                    />
                                     <span
                                         className={cn(
-                                            "hidden text-sm tracking-wide lg:inline",
+                                            "hidden text-[13px] tracking-wide lg:inline",
                                             isActive
                                                 ? "font-semibold"
                                                 : "font-medium",

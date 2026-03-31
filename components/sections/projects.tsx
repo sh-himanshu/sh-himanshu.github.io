@@ -5,104 +5,77 @@ import {
     ChevronUp,
     ExternalLink,
     GitFork,
-    PlayCircle,
     Star,
 } from "lucide-react";
-import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 import { Github } from "@/lib/icons";
-import { PROJECTS } from "@/lib/projects";
+import type { Project } from "@/lib/projects";
 
 const INITIAL_COUNT = 3;
 
-export function ProjectsSection() {
+export function ProjectsSection({ projects }: { projects: Project[] }) {
     const [expanded, setExpanded] = useState(false);
-    const items = expanded ? PROJECTS : PROJECTS.slice(0, INITIAL_COUNT);
-    const hasMore = PROJECTS.length > INITIAL_COUNT;
+    const items = expanded ? projects : projects.slice(0, INITIAL_COUNT);
+    const hasMore = projects.length > INITIAL_COUNT;
 
     return (
         <>
             {items.map((project) => (
-                <div
-                    key={project.title}
-                    className="reveal-on-scroll group flex flex-col overflow-hidden rounded-[var(--tile-radius)] border border-white/[0.08] bg-zinc-900/65 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-white/20 hover:bg-zinc-900/80 hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)]"
+                <article
+                    key={project.slug}
+                    className="reveal-on-scroll group relative flex flex-col overflow-hidden rounded-[var(--tile-radius)] border-2 bg-zinc-900/70 backdrop-blur-xl transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+                    style={{
+                        borderColor: `color-mix(in oklch, ${project.languageColor} 40%, transparent)`,
+                    }}
                     data-reveal
                 >
-                    {/* Image */}
-                    <div className="relative aspect-video overflow-hidden border-b border-white/[0.08]">
-                        <Image
-                            src={project.imageUrl}
-                            alt={`${project.title} preview`}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center gap-4 bg-black/60 opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
-                            {project.liveUrl && (
-                                <a
-                                    href={project.liveUrl}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="flex items-center gap-2 rounded-full bg-white px-4 py-2 font-medium text-black transition-colors hover:bg-zinc-200"
-                                >
-                                    <PlayCircle size={18} />
-                                    Live Demo
-                                </a>
-                            )}
-                            <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="rounded-full border border-white/20 bg-white/10 p-2 text-white transition-colors hover:bg-white/20"
+                    <div className="flex flex-1 flex-col p-[var(--tile-padding)]">
+                        <div className="mb-3 flex items-start justify-between gap-3">
+                            <Link
+                                href={`/projects/${project.slug}`}
+                                className="text-[17px] font-semibold leading-tight tracking-tight text-white hover:text-[var(--accent)] transition-colors"
                             >
-                                <Github size={20} />
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-1 flex-col p-5">
-                        <div className="mb-2 flex items-start justify-between">
-                            <h3 className="text-xl font-semibold text-white transition-colors group-hover:text-blue-400">
                                 {project.title}
-                            </h3>
-                            <div className="flex gap-2">
+                            </Link>
+                            <div className="flex shrink-0 items-center gap-0.5">
                                 <a
                                     href={project.githubUrl}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-zinc-400 transition-colors hover:text-white"
+                                    className="flex size-8 items-center justify-center rounded-lg text-zinc-400 transition-colors hover:bg-white/[0.08] hover:text-white"
                                     title="Source Code"
                                 >
-                                    <Github size={18} />
+                                    <Github size={16} />
                                 </a>
                                 {project.liveUrl && (
                                     <a
                                         href={project.liveUrl}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="text-zinc-400 transition-colors hover:text-white"
+                                        className="flex size-8 items-center justify-center rounded-lg text-zinc-400 transition-colors hover:bg-white/[0.08] hover:text-white"
                                         title="Live Site"
                                     >
-                                        <ExternalLink size={18} />
+                                        <ExternalLink size={15} />
                                     </a>
                                 )}
                             </div>
                         </div>
 
-                        <p className="mb-4 flex-1 text-sm leading-relaxed text-zinc-300 line-clamp-3">
+                        <Link
+                            href={`/projects/${project.slug}`}
+                            className="mb-4 flex-1 text-[13.5px] leading-relaxed text-zinc-400 line-clamp-3 hover:text-zinc-300 transition-colors"
+                        >
                             {project.desc}
-                        </p>
+                        </Link>
 
-                        {/* Tags */}
                         {project.topics.length > 0 && (
-                            <div className="mb-4 flex flex-wrap gap-2">
+                            <div className="mb-4 flex flex-wrap gap-1.5">
                                 {project.topics.map((tag) => (
                                     <span
                                         key={tag}
-                                        className="rounded-md border border-white/[0.08] bg-white/10 px-2 py-1 text-[11px] text-zinc-200 shadow-sm"
+                                        className="rounded-md border border-white/[0.08] bg-white/[0.05] px-2 py-0.5 text-[11px] font-medium text-zinc-300"
                                     >
                                         {tag}
                                     </span>
@@ -110,45 +83,45 @@ export function ProjectsSection() {
                             </div>
                         )}
 
-                        {/* Footer */}
-                        <div className="flex items-center justify-between border-t border-white/[0.08] pt-3 text-xs text-zinc-400">
+                        <div className="mt-auto flex items-center justify-between border-t border-white/[0.07] pt-3 text-xs text-zinc-500">
                             <div className="flex items-center gap-1.5">
                                 <span
-                                    className="size-2.5 rounded-full"
+                                    className="size-2.5 rounded-full shadow-[0_0_6px_currentColor]"
                                     style={{
                                         backgroundColor: project.languageColor,
+                                        color: project.languageColor,
                                     }}
                                 />
-                                <span className="text-zinc-200">
+                                <span className="font-medium text-zinc-300">
                                     {project.language}
                                 </span>
                             </div>
 
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-3.5">
                                 {project.stars > 0 && (
-                                    <span className="flex items-center gap-1">
-                                        <Star size={14} />
+                                    <span className="flex items-center gap-1 text-zinc-400">
+                                        <Star size={13} />
                                         {project.stars}
                                     </span>
                                 )}
                                 {project.forks > 0 && (
-                                    <span className="flex items-center gap-1">
-                                        <GitFork size={14} />
+                                    <span className="flex items-center gap-1 text-zinc-400">
+                                        <GitFork size={13} />
                                         {project.forks}
                                     </span>
                                 )}
                             </div>
                         </div>
                     </div>
-                </div>
+                </article>
             ))}
 
             {hasMore && (
-                <div className="col-span-full flex justify-center">
+                <div className="col-span-full flex justify-center pt-2">
                     <button
                         type="button"
                         onClick={() => setExpanded((prev) => !prev)}
-                        className="flex items-center gap-2 rounded-full border border-white/10 bg-zinc-900/60 px-6 py-2.5 text-sm font-medium text-zinc-300 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-zinc-900/80 hover:text-white"
+                        className="flex items-center gap-2 rounded-xl border border-white/[0.1] bg-white/[0.05] px-6 py-2.5 text-sm font-medium text-zinc-300 transition-all duration-200 hover:border-white/[0.18] hover:bg-white/[0.1] hover:text-white"
                     >
                         {expanded ? (
                             <>

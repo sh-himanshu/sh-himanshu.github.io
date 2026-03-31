@@ -10,7 +10,7 @@ import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 import { useExperienceExpanded } from "./experience-context";
 
-const INITIAL_COUNT = 2;
+const INITIAL_COUNT = 1;
 
 export function ExperienceCards() {
     const { expanded } = useExperienceExpanded();
@@ -27,21 +27,22 @@ export function ExperienceCards() {
                         size="6x2"
                         className={cn(
                             "group row-span-2 flex-col justify-start",
-                            isCurrent && "border-[#0078d4]/30 bg-[#0078d4]/10",
+                            isCurrent &&
+                                "border-[var(--accent)]/25 bg-[var(--accent)]/[0.08]",
                         )}
                     >
                         <div
                             className={cn(
-                                "pointer-events-none absolute top-0 right-0 size-80 rounded-full bg-linear-to-br opacity-10 blur-[100px] transition-opacity duration-700 group-hover:opacity-30",
+                                "pointer-events-none absolute top-0 right-0 size-72 rounded-full bg-linear-to-br opacity-[0.12] blur-[100px] transition-opacity duration-500 group-hover:opacity-[0.25]",
                                 exp.gradient,
                             )}
                         />
 
-                        <div className="relative z-20 flex w-full flex-col gap-5 sm:gap-10 md:flex-row md:items-start">
-                            <div className="flex shrink-0 flex-col gap-2 md:w-64">
+                        <div className="relative z-20 flex w-full flex-col gap-5 sm:gap-8 md:flex-row md:items-start">
+                            <div className="flex shrink-0 flex-col gap-2.5 md:w-56">
                                 <div className="flex items-center gap-3">
                                     {exp.logo ? (
-                                        <div className="relative size-10 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white shadow-sm">
+                                        <div className="relative size-10 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-white shadow-sm">
                                             <Image
                                                 src={exp.logo}
                                                 alt={`${exp.company} logo`}
@@ -53,7 +54,7 @@ export function ExperienceCards() {
                                     ) : (
                                         <div
                                             className={cn(
-                                                "flex size-10 shrink-0 items-center justify-center rounded-xl text-sm font-bold text-white shadow-sm bg-linear-to-br",
+                                                "flex size-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-white shadow-sm bg-linear-to-br",
                                                 exp.gradient,
                                             )}
                                             aria-hidden="true"
@@ -61,22 +62,25 @@ export function ExperienceCards() {
                                             {exp.company.charAt(0)}
                                         </div>
                                     )}
-                                    <span className="text-xl font-bold tracking-tight text-zinc-900 drop-shadow-sm sm:text-3xl dark:text-white">
+                                    <span className="text-lg font-bold tracking-tight text-white sm:text-xl">
                                         {exp.company}
                                     </span>
                                 </div>
-                                <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-zinc-500 uppercase sm:text-sm dark:text-zinc-400">
+                                <div className="flex items-center gap-2 text-[11px] font-semibold tracking-widest text-zinc-500 uppercase">
                                     <Calendar
-                                        size={16}
+                                        size={14}
+                                        strokeWidth={2}
                                         className={
                                             isCurrent
-                                                ? "text-[#0078d4]"
-                                                : "text-zinc-400 dark:text-white/60"
+                                                ? "text-[var(--accent)]"
+                                                : "text-zinc-500"
                                         }
                                     />
                                     <span
                                         className={
-                                            isCurrent ? "text-[#0078d4]" : ""
+                                            isCurrent
+                                                ? "text-[var(--accent)]"
+                                                : ""
                                         }
                                     >
                                         {exp.period}
@@ -85,24 +89,24 @@ export function ExperienceCards() {
                             </div>
 
                             <div className="flex-1">
-                                <h3 className="mb-4 text-lg font-bold tracking-tight text-zinc-900 sm:text-2xl dark:text-white">
+                                <h3 className="mb-3 text-base font-semibold tracking-tight text-white sm:text-lg">
                                     {exp.role}
                                 </h3>
-                                <p className="mb-5 max-w-3xl text-base font-medium text-pretty text-zinc-600 sm:text-[17px] dark:text-zinc-300">
+                                <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-pretty text-zinc-300/80">
                                     {highlightText(exp.desc)}
                                 </p>
-                                <ul className="space-y-3">
+                                <ul className="space-y-2.5">
                                     {exp.highlights.map((item) => (
                                         <li
                                             key={item}
-                                            className="flex items-start gap-3 text-sm text-zinc-500 sm:gap-4 sm:text-[15px] dark:text-zinc-400/90"
+                                            className="flex items-start gap-3 text-[13.5px] text-zinc-400 sm:text-[14px]"
                                         >
                                             <div
                                                 className={cn(
-                                                    "mt-2 size-1.5 shrink-0 rounded-full",
+                                                    "mt-[7px] size-1.5 shrink-0 rounded-full shadow-[0_0_6px_currentColor]",
                                                     isCurrent
-                                                        ? "bg-[#0078d4]"
-                                                        : "bg-zinc-400 dark:bg-white/30 dark:shadow-[0_0_8px_rgba(255,255,255,0.5)]",
+                                                        ? "bg-[var(--accent)] text-[var(--accent)]"
+                                                        : "bg-zinc-500 text-zinc-500",
                                                 )}
                                             />
                                             <span className="leading-relaxed">
@@ -113,11 +117,12 @@ export function ExperienceCards() {
                                 </ul>
 
                                 {exp.technologies.length > 0 && (
-                                    <div className="mt-6 flex flex-wrap gap-2">
+                                    <div className="mt-5 flex flex-wrap gap-1.5">
                                         {exp.technologies.map((tech) => (
                                             <TechBadge
                                                 key={tech.label}
                                                 label={tech.label}
+                                                brandColor={tech.brandColor}
                                                 icon={
                                                     tech.iconName
                                                         ? getIcon(tech.iconName)
@@ -147,7 +152,7 @@ export function ExperienceToggle() {
             <button
                 type="button"
                 onClick={toggle}
-                className="flex items-center gap-2 rounded-full border border-white/10 bg-zinc-900/60 px-6 py-2.5 text-sm font-medium text-zinc-300 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-zinc-900/80 hover:text-white"
+                className="flex items-center gap-2 rounded-xl border border-white/[0.1] bg-white/[0.05] px-6 py-2.5 text-sm font-medium text-zinc-300 transition-all duration-200 hover:border-white/[0.18] hover:bg-white/[0.1] hover:text-white"
             >
                 {expanded ? (
                     <>

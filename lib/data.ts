@@ -43,6 +43,7 @@ export type TileColor =
 export interface ExperienceTech {
     label: string;
     iconName?: string;
+    brandColor?: string;
 }
 
 export interface Experience {
@@ -79,7 +80,7 @@ export const SITE_CONFIG = {
     phone: "KzkxIDgwNTgwMDk0MTU=",
     resumeUrl:
         "https://drive.google.com/uc?export=download&id=1vVL9G0t-H99QSifRNha-2yAJxGdVDuiL",
-    availability: "Available for hire",
+    availability: "OPEN TO WORK",
     description:
         "Most developers start with code. I start with understanding what actually matters to users, then build for it.\n\nOver 4+ years, I've shipped web, mobile, and desktop products used by thousands across cleantech and B2B SaaS — including platforms now serving 100,000+ businesses.\n\nI'm the person who simplifies messy systems, fixes what breaks at scale, and asks \"why are we building this?\" before \"how?\"\n\nAt Birdeye, I build scalable frontend systems with React, TypeScript, and Redux Saga, along with the less visible work: performance tuning, secure architecture, and system design.\n\nPre-AI, good engineering was about clean code.\nPost-AI, it's about speed with clarity.\n\nI use AI to move faster without cutting corners — reviewing better, shipping smarter, and operating with leverage.\n\nOpen to roles involving scalable systems, AI-driven workflows, and products where engineering meets real business impact.\n\nLet's talk: reach out via the contact form.",
 } as const;
@@ -191,10 +192,10 @@ export const EXPERIENCES: Experience[] = [
             "Collaborating closely with backend and design teams to drive product quality.",
         ],
         technologies: [
-            { label: "React", iconName: "Globe" },
-            { label: "TypeScript", iconName: "Code" },
-            { label: "Redux Saga", iconName: "Layers" },
-            { label: "JavaScript", iconName: "Code" },
+            { label: "React", iconName: "Globe", brandColor: "#61dafb" },
+            { label: "TypeScript", iconName: "Code", brandColor: "#3178c6" },
+            { label: "Redux Saga", iconName: "Layers", brandColor: "#764abc" },
+            { label: "JavaScript", iconName: "Code", brandColor: "#f7df1e" },
         ],
     },
     {
@@ -212,14 +213,22 @@ export const EXPERIENCES: Experience[] = [
             "Led development of a field survey tool, reducing manual data entry by ~60% through reusable form components.",
         ],
         technologies: [
-            { label: "React", iconName: "Globe" },
-            { label: "React Native", iconName: "Smartphone" },
-            { label: "TypeScript", iconName: "Code" },
-            { label: "Node.js", iconName: "Terminal" },
-            { label: "PostgreSQL", iconName: "Database" },
-            { label: "Hasura", iconName: "Database" },
-            { label: "Next.js", iconName: "Globe" },
-            { label: "Expo", iconName: "Smartphone" },
+            { label: "React", iconName: "Globe", brandColor: "#61dafb" },
+            {
+                label: "React Native",
+                iconName: "Smartphone",
+                brandColor: "#61dafb",
+            },
+            { label: "TypeScript", iconName: "Code", brandColor: "#3178c6" },
+            { label: "Node.js", iconName: "Terminal", brandColor: "#5fa04e" },
+            {
+                label: "PostgreSQL",
+                iconName: "Database",
+                brandColor: "#336791",
+            },
+            { label: "Hasura", iconName: "Database", brandColor: "#1eb4d4" },
+            { label: "Next.js", iconName: "Globe", brandColor: "#ffffff" },
+            { label: "Expo", iconName: "Smartphone", brandColor: "#000020" },
         ],
     },
     {
@@ -235,9 +244,9 @@ export const EXPERIENCES: Experience[] = [
             "Developed core UI modules for a hybrid remote-work platform including dashboards, seat booking, and notification workflows.",
         ],
         technologies: [
-            { label: "React", iconName: "Globe" },
-            { label: "TypeScript", iconName: "Code" },
-            { label: "GraphQL", iconName: "Database" },
+            { label: "React", iconName: "Globe", brandColor: "#61dafb" },
+            { label: "TypeScript", iconName: "Code", brandColor: "#3178c6" },
+            { label: "GraphQL", iconName: "Database", brandColor: "#e535ab" },
             { label: "Agora SDK" },
         ],
     },

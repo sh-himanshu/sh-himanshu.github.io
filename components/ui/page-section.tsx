@@ -9,6 +9,7 @@ export const PAGE_GRID_CLASS =
 interface PageSectionProps {
     id: string;
     title: string;
+    number?: string;
     children: ReactNode;
     className?: string;
     gridClassName?: string;
@@ -17,6 +18,7 @@ interface PageSectionProps {
 export function PageSection({
     id,
     title,
+    number,
     children,
     className,
     gridClassName,
@@ -30,7 +32,11 @@ export function PageSection({
                 className,
             )}
         >
-            <SectionHeader title={title} headingId={`${id}-heading`} />
+            <SectionHeader
+                title={title}
+                headingId={`${id}-heading`}
+                number={number}
+            />
             <div className={cn(PAGE_GRID_CLASS, gridClassName)}>{children}</div>
         </section>
     );
