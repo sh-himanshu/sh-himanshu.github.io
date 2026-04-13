@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
     --background: #f8f8f8;
     --foreground: #18181b;
-    --border-color: rgb(0 0 0 / 0.1);
+    --border-color: rgb(0 0 0 / 0.08);
     --outline-color: rgb(0 100 180 / 0.5);
     --page-gutter: clamp(1.25rem, 3vw + 0.5rem, 4rem);
     --tile-gap: clamp(0.875rem, 1vw + 0.5rem, 1.125rem);
@@ -15,6 +17,7 @@
     --accent: #2660e0;
     --accent-muted: #3b82f6;
     --accent-glow: rgba(37 99 235 / 0.15);
+    --ring-offset: #f8f8f8;
 }
 
 .dark {
@@ -22,6 +25,7 @@
     --foreground: #ededef;
     --border-color: rgb(255 255 255 / 0.07);
     --outline-color: rgb(120 196 255 / 0.5);
+    --ring-offset: #060608;
 }
 
 * {
@@ -111,6 +115,10 @@ li {
 /* Markdown prose styles for project README pages */
 .readme-prose {
     line-height: 1.75;
+    color: #52525b; /* zinc-600 */
+}
+
+.dark .readme-prose {
     color: #a1a1aa; /* zinc-400 */
 }
 
@@ -122,30 +130,44 @@ li {
     font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: #fff;
-    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    color: #18181b;
+    border-bottom: 1px solid rgb(0 0 0 / 0.08);
     padding-bottom: 0.75rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
+}
+
+.dark .readme-prose h1 {
+    color: #fff;
+    border-bottom-color: rgb(255 255 255 / 0.08);
 }
 
 .readme-prose h2 {
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: #fff;
-    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+    color: #18181b;
+    border-bottom: 1px solid rgb(0 0 0 / 0.06);
     padding-bottom: 0.5rem;
     margin-top: 1.75rem;
     margin-bottom: 0.75rem;
 }
 
+.dark .readme-prose h2 {
+    color: #fff;
+    border-bottom-color: rgb(255 255 255 / 0.06);
+}
+
 .readme-prose h3 {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #fff;
+    color: #18181b;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
+}
+
+.dark .readme-prose h3 {
+    color: #fff;
 }
 
 .readme-prose h4,
@@ -153,9 +175,15 @@ li {
 .readme-prose h6 {
     font-size: 1rem;
     font-weight: 600;
-    color: #e4e4e7;
+    color: #27272a;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
+}
+
+.dark .readme-prose h4,
+.dark .readme-prose h5,
+.dark .readme-prose h6 {
+    color: #e4e4e7;
 }
 
 .readme-prose p {
@@ -173,27 +201,42 @@ li {
 }
 
 .readme-prose strong {
-    color: #fff;
+    color: #18181b;
     font-weight: 600;
+}
+
+.dark .readme-prose strong {
+    color: #fff;
 }
 
 .readme-prose code {
     font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-size: 0.8125rem;
-    background: rgb(255 255 255 / 0.06);
-    border: 1px solid rgb(255 255 255 / 0.08);
+    background: rgb(0 0 0 / 0.04);
+    border: 1px solid rgb(0 0 0 / 0.08);
     border-radius: 0.375rem;
     padding: 0.125rem 0.375rem;
+    color: #27272a;
+}
+
+.dark .readme-prose code {
+    background: rgb(255 255 255 / 0.06);
+    border-color: rgb(255 255 255 / 0.08);
     color: #e4e4e7;
 }
 
 .readme-prose pre {
-    background: rgb(9 9 11 / 0.6);
-    border: 1px solid rgb(255 255 255 / 0.08);
+    background: rgb(246 246 246 / 0.8);
+    border: 1px solid rgb(0 0 0 / 0.08);
     border-radius: 0.75rem;
     padding: 1rem 1.25rem;
     overflow-x: auto;
     margin: 1rem 0;
+}
+
+.dark .readme-prose pre {
+    background: rgb(9 9 11 / 0.6);
+    border-color: rgb(255 255 255 / 0.08);
 }
 
 .readme-prose pre code {
@@ -202,6 +245,10 @@ li {
     padding: 0;
     font-size: 0.8125rem;
     line-height: 1.7;
+    color: #3f3f46;
+}
+
+.dark .readme-prose pre code {
     color: #d4d4d8;
 }
 
@@ -231,9 +278,13 @@ li {
 .readme-prose blockquote {
     border-left: 3px solid rgb(37 99 235 / 0.4);
     padding-left: 1rem;
-    color: #a1a1aa;
+    color: #71717a;
     font-style: italic;
     margin: 1rem 0;
+}
+
+.dark .readme-prose blockquote {
+    color: #a1a1aa;
 }
 
 .readme-prose table {
@@ -244,33 +295,75 @@ li {
 }
 
 .readme-prose th {
-    border-bottom: 1px solid rgb(255 255 255 / 0.12);
+    border-bottom: 1px solid rgb(0 0 0 / 0.1);
     padding: 0.5rem 0.75rem;
     text-align: left;
     font-weight: 600;
+    color: #27272a;
+}
+
+.dark .readme-prose th {
+    border-bottom-color: rgb(255 255 255 / 0.12);
     color: #e4e4e7;
 }
 
 .readme-prose td {
-    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+    border-bottom: 1px solid rgb(0 0 0 / 0.06);
     padding: 0.5rem 0.75rem;
+}
+
+.dark .readme-prose td {
+    border-bottom-color: rgb(255 255 255 / 0.06);
 }
 
 .readme-prose hr {
     border: none;
-    border-top: 1px solid rgb(255 255 255 / 0.08);
+    border-top: 1px solid rgb(0 0 0 / 0.08);
     margin: 1.5rem 0;
+}
+
+.dark .readme-prose hr {
+    border-top-color: rgb(255 255 255 / 0.08);
 }
 
 .readme-prose img {
     border-radius: 0.75rem;
-    border: 1px solid rgb(255 255 255 / 0.08);
+    border: 1px solid rgb(0 0 0 / 0.08);
     max-width: 100%;
     height: auto;
 }
 
+.dark .readme-prose img {
+    border-color: rgb(255 255 255 / 0.08);
+}
+
 /* ── Background mesh gradient ── */
 .bg-mesh {
+    background:
+        radial-gradient(
+            ellipse 80% 50% at 30% 10%,
+            rgba(38, 96, 224, 0.08) 0%,
+            transparent 60%
+        ),
+        radial-gradient(
+            ellipse 60% 45% at 80% 25%,
+            rgba(124, 58, 237, 0.06) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse 70% 55% at 65% 70%,
+            rgba(38, 96, 224, 0.04) 0%,
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse 50% 40% at 15% 80%,
+            rgba(99, 102, 241, 0.03) 0%,
+            transparent 50%
+        ),
+        var(--background);
+}
+
+.dark .bg-mesh {
     background:
         radial-gradient(
             ellipse 80% 50% at 30% 10%,
