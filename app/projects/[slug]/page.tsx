@@ -47,14 +47,14 @@ export default async function ProjectPage({
     const readme = await fetchRepoReadme(project.owner, project.repo);
 
     return (
-        <div className="min-h-screen text-zinc-200 selection:bg-[var(--accent)]/30 selection:text-white">
+        <div className="min-h-screen text-zinc-800 selection:bg-[var(--accent)]/30 selection:text-white dark:text-zinc-200">
             <Background />
 
             <main className="relative z-10 mx-auto w-full max-w-[68rem] px-(--page-gutter) pt-8 pb-24 sm:pt-12 sm:pb-32">
                 {/* Back navigation */}
                 <Link
                     href="/#projects"
-                    className="group mb-8 inline-flex items-center gap-2 rounded-xl border border-white/[0.1] bg-white/[0.05] px-4 py-2 text-sm font-medium text-zinc-400 backdrop-blur-md transition-all duration-200 hover:border-white/[0.2] hover:bg-white/[0.1] hover:text-white"
+                    className="group mb-8 inline-flex items-center gap-2 rounded-xl border border-black/[0.08] bg-black/[0.03] px-4 py-2 text-sm font-medium text-zinc-500 backdrop-blur-md transition-all duration-200 hover:border-black/[0.15] hover:bg-black/[0.06] hover:text-zinc-900 dark:border-white/[0.1] dark:bg-white/[0.05] dark:text-zinc-400 dark:hover:border-white/[0.2] dark:hover:bg-white/[0.1] dark:hover:text-white"
                 >
                     <ArrowLeft
                         size={16}
@@ -65,17 +65,17 @@ export default async function ProjectPage({
 
                 {/* Project header card */}
                 <div
-                    className="mb-8 overflow-hidden rounded-[var(--tile-radius)] border-2 bg-zinc-900/70 p-[var(--tile-padding)] backdrop-blur-xl"
+                    className="mb-8 overflow-hidden rounded-[var(--tile-radius)] border-2 bg-white/70 p-[var(--tile-padding)] backdrop-blur-xl dark:bg-zinc-900/70"
                     style={{
                         borderColor: `color-mix(in oklch, ${project.languageColor} 40%, transparent)`,
                     }}
                 >
                     <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                         <div className="min-w-0 flex-1">
-                            <h1 className="mb-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                            <h1 className="mb-3 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-4xl">
                                 {project.title}
                             </h1>
-                            <p className="mb-4 max-w-2xl text-[15px] leading-relaxed text-zinc-400">
+                            <p className="mb-4 max-w-2xl text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400">
                                 {project.desc}
                             </p>
 
@@ -90,18 +90,18 @@ export default async function ProjectPage({
                                             color: project.languageColor,
                                         }}
                                     />
-                                    <span className="font-medium text-zinc-300">
+                                    <span className="font-medium text-zinc-600 dark:text-zinc-300">
                                         {project.language}
                                     </span>
                                 </div>
                                 {project.stars > 0 && (
-                                    <span className="flex items-center gap-1 text-zinc-400">
+                                    <span className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400">
                                         <Star size={14} />
                                         {project.stars}
                                     </span>
                                 )}
                                 {project.forks > 0 && (
-                                    <span className="flex items-center gap-1 text-zinc-400">
+                                    <span className="flex items-center gap-1 text-zinc-500 dark:text-zinc-400">
                                         <GitFork size={14} />
                                         {project.forks}
                                     </span>
@@ -114,7 +114,7 @@ export default async function ProjectPage({
                                     {project.topics.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="rounded-md border border-white/[0.08] bg-white/[0.05] px-2.5 py-0.5 text-[11px] font-medium text-zinc-300"
+                                            className="rounded-md border border-black/[0.06] bg-black/[0.03] px-2.5 py-0.5 text-[11px] font-medium text-zinc-600 dark:border-white/[0.08] dark:bg-white/[0.05] dark:text-zinc-300"
                                         >
                                             {tag}
                                         </span>
@@ -129,7 +129,7 @@ export default async function ProjectPage({
                                 href={project.githubUrl}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-xl border border-white/[0.12] bg-white/[0.06] px-5 py-2.5 text-[14px] font-medium text-zinc-200 transition-all duration-200 hover:border-white/[0.22] hover:bg-white/[0.12] hover:text-white"
+                                className="inline-flex items-center gap-2 rounded-xl border border-black/[0.1] bg-black/[0.04] px-5 py-2.5 text-[14px] font-medium text-zinc-700 transition-all duration-200 hover:border-black/[0.18] hover:bg-black/[0.08] hover:text-zinc-900 dark:border-white/[0.12] dark:bg-white/[0.06] dark:text-zinc-200 dark:hover:border-white/[0.22] dark:hover:bg-white/[0.12] dark:hover:text-white"
                             >
                                 <Github size={16} />
                                 Source
@@ -151,7 +151,7 @@ export default async function ProjectPage({
 
                 {/* README content */}
                 {readme ? (
-                    <div className="overflow-hidden rounded-[var(--tile-radius)] border border-white/[0.09] bg-zinc-900/70 p-[var(--tile-padding)] backdrop-blur-xl">
+                    <div className="overflow-hidden rounded-[var(--tile-radius)] border border-black/[0.07] bg-white/70 p-[var(--tile-padding)] backdrop-blur-xl dark:border-white/[0.09] dark:bg-zinc-900/70">
                         <div className="readme-prose">
                             <Markdown remarkPlugins={[remarkGfm]}>
                                 {readme}
@@ -159,8 +159,8 @@ export default async function ProjectPage({
                         </div>
                     </div>
                 ) : (
-                    <div className="flex flex-col items-center justify-center rounded-[var(--tile-radius)] border border-white/[0.09] bg-zinc-900/70 px-8 py-16 text-center backdrop-blur-xl">
-                        <p className="text-lg font-medium text-zinc-400">
+                    <div className="flex flex-col items-center justify-center rounded-[var(--tile-radius)] border border-black/[0.07] bg-white/70 px-8 py-16 text-center backdrop-blur-xl dark:border-white/[0.09] dark:bg-zinc-900/70">
+                        <p className="text-lg font-medium text-zinc-500 dark:text-zinc-400">
                             No README available for this project.
                         </p>
                         <a

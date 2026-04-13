@@ -10,7 +10,7 @@ export function MetroIcon({ icon: Icon, gradient }: MetroIconProps) {
     return (
         <div
             className={cn(
-                "relative flex size-14 items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-linear-to-br shadow-[0_8px_16px_rgba(0,0,0,0.32)] transition-transform duration-300 ease-out group-hover:scale-105",
+                "relative flex size-14 items-center justify-center overflow-hidden rounded-2xl border border-black/15 bg-linear-to-br shadow-[0_8px_16px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out group-hover:scale-105 dark:border-white/20 dark:shadow-[0_8px_16px_rgba(0,0,0,0.32)]",
                 gradient,
             )}
             aria-hidden="true"

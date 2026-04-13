@@ -34,7 +34,7 @@ export function Background() {
             {/* Noise texture */}
             {noiseUrl && (
                 <div
-                    className="absolute inset-0 opacity-[0.35] mix-blend-soft-light"
+                    className="absolute inset-0 opacity-[0.2] mix-blend-soft-light dark:opacity-[0.35]"
                     style={{
                         backgroundImage: `url(${noiseUrl})`,
                         backgroundRepeat: "repeat",

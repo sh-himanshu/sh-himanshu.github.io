@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { NAV_ITEMS } from "@/lib/data";
 import { haptic } from "@/lib/haptic/haptic";
@@ -46,8 +47,8 @@ export function Navbar() {
                 className={cn(
                     "pointer-events-auto mx-auto w-fit rounded-2xl border px-1.5 py-1.5 backdrop-blur-2xl transition-all duration-300 ease-out",
                     isScrolled
-                        ? "border-white/[0.08] bg-zinc-900/80 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]"
-                        : "border-white/[0.04] bg-zinc-950/50 shadow-[0_4px_16px_rgba(0,0,0,0.2)]",
+                        ? "border-black/[0.06] bg-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.5)] dark:border-white/[0.08] dark:bg-zinc-900/80 dark:shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.04)]"
+                        : "border-black/[0.04] bg-white/50 shadow-[0_4px_16px_rgba(0,0,0,0.04)] dark:border-white/[0.04] dark:bg-zinc-950/50 dark:shadow-[0_4px_16px_rgba(0,0,0,0.2)]",
                 )}
             >
                 <ul className="relative flex items-center justify-center gap-0.5 px-0 py-0 md:gap-1">
@@ -64,10 +65,10 @@ export function Navbar() {
                                     }
                                     className={cn(
                                         "flex items-center justify-center gap-2 rounded-xl px-3 py-2 transition-all duration-200 focus-visible:ring-2 focus-visible:outline-none md:px-3.5",
-                                        "focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060608]",
+                                        "focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)]",
                                         isActive
-                                            ? "bg-white/[0.1] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
-                                            : "text-zinc-500 hover:bg-white/[0.05] hover:text-zinc-300",
+                                            ? "bg-black/[0.06] text-zinc-900 shadow-[inset_0_1px_0_rgba(0,0,0,0.03)] dark:bg-white/[0.1] dark:text-white dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+                                            : "text-zinc-500 hover:bg-black/[0.04] hover:text-zinc-700 dark:hover:bg-white/[0.05] dark:hover:text-zinc-300",
                                     )}
                                     onClick={() => haptic(16)}
                                 >
@@ -89,6 +90,9 @@ export function Navbar() {
                             </li>
                         );
                     })}
+                    <li className="relative z-10">
+                        <ThemeToggle />
+                    </li>
                 </ul>
             </nav>
         </div>

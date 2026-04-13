@@ -42,7 +42,7 @@ export function ExperienceCards() {
                             <div className="flex shrink-0 flex-col gap-2.5 md:w-56">
                                 <div className="flex items-center gap-3">
                                     {exp.logo ? (
-                                        <div className="relative size-10 shrink-0 overflow-hidden rounded-lg border border-white/10 bg-white shadow-sm">
+                                        <div className="relative size-10 shrink-0 overflow-hidden rounded-lg border border-black/10 bg-white shadow-sm dark:border-white/10">
                                             <Image
                                                 src={exp.logo}
                                                 alt={`${exp.company} logo`}
@@ -62,7 +62,7 @@ export function ExperienceCards() {
                                             {exp.company.charAt(0)}
                                         </div>
                                     )}
-                                    <span className="text-lg font-bold tracking-tight text-white sm:text-xl">
+                                    <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white sm:text-xl">
                                         {exp.company}
                                     </span>
                                 </div>
@@ -89,17 +89,17 @@ export function ExperienceCards() {
                             </div>
 
                             <div className="flex-1">
-                                <h3 className="mb-3 text-base font-semibold tracking-tight text-white sm:text-lg">
+                                <h3 className="mb-3 text-base font-semibold tracking-tight text-zinc-900 dark:text-white sm:text-lg">
                                     {exp.role}
                                 </h3>
-                                <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-pretty text-zinc-300/80">
+                                <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-pretty text-zinc-600/80 dark:text-zinc-300/80">
                                     {highlightText(exp.desc)}
                                 </p>
                                 <ul className="space-y-2.5">
                                     {exp.highlights.map((item) => (
                                         <li
                                             key={item}
-                                            className="flex items-start gap-3 text-[13.5px] text-zinc-400 sm:text-[14px]"
+                                            className="flex items-start gap-3 text-[13.5px] text-zinc-500 dark:text-zinc-400 sm:text-[14px]"
                                         >
                                             <div
                                                 className={cn(
@@ -152,7 +152,7 @@ export function ExperienceToggle() {
             <button
                 type="button"
                 onClick={toggle}
-                className="flex items-center gap-2 rounded-xl border border-white/[0.1] bg-white/[0.05] px-6 py-2.5 text-sm font-medium text-zinc-300 transition-all duration-200 hover:border-white/[0.18] hover:bg-white/[0.1] hover:text-white"
+                className="flex items-center gap-2 rounded-xl border border-black/[0.08] bg-black/[0.04] px-6 py-2.5 text-sm font-medium text-zinc-600 transition-all duration-200 hover:border-black/[0.15] hover:bg-black/[0.07] hover:text-zinc-900 dark:border-white/[0.1] dark:bg-white/[0.05] dark:text-zinc-300 dark:hover:border-white/[0.18] dark:hover:bg-white/[0.1] dark:hover:text-white"
             >
                 {expanded ? (
                     <>

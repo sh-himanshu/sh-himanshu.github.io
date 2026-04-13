@@ -128,12 +128,12 @@ export function Tile({
     const pointerProps = { onPointerMove: handlePointerMove };
 
     const sharedClasses = cn(
-        "reveal-on-scroll group relative flex min-h-0 w-full flex-col overflow-hidden rounded-[var(--tile-radius)] border backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.03)] transition-all duration-300 ease-out md:backdrop-blur-2xl",
-        "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-[radial-gradient(300px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(255,255,255,0.06),transparent_60%)] before:opacity-0 before:transition-opacity before:duration-300 before:content-['']",
-        "after:pointer-events-none after:absolute after:inset-px after:rounded-[calc(var(--tile-radius)-1px)] after:border after:border-white/[0.05] after:content-['']",
+        "reveal-on-scroll group relative flex min-h-0 w-full flex-col overflow-hidden rounded-[var(--tile-radius)] border backdrop-blur-xl shadow-[0_8px_40px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.03)] transition-all duration-300 ease-out md:backdrop-blur-2xl dark:shadow-[0_8px_40px_rgba(0,0,0,0.25),0_0_0_1px_rgba(255,255,255,0.03)]",
+        "before:pointer-events-none before:absolute before:inset-0 before:rounded-[inherit] before:bg-[radial-gradient(300px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(0,0,0,0.03),transparent_60%)] before:opacity-0 before:transition-opacity before:duration-300 before:content-[''] dark:before:bg-[radial-gradient(300px_circle_at_var(--mouse-x,50%)_var(--mouse-y,50%),rgba(255,255,255,0.06),transparent_60%)]",
+        "after:pointer-events-none after:absolute after:inset-px after:rounded-[calc(var(--tile-radius)-1px)] after:border after:border-black/[0.03] after:content-[''] dark:after:border-white/[0.05]",
         "hover:before:opacity-100",
         isInteractive &&
-            "cursor-pointer hover:-translate-y-0.5 hover:border-white/[0.16] hover:shadow-[0_16px_60px_rgba(0,0,0,0.35)] hover:before:opacity-100 active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#060608]",
+            "cursor-pointer hover:-translate-y-0.5 hover:border-black/[0.12] hover:shadow-[0_16px_60px_rgba(0,0,0,0.1)] hover:before:opacity-100 active:translate-y-0 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)] dark:hover:border-white/[0.16] dark:hover:shadow-[0_16px_60px_rgba(0,0,0,0.35)]",
         SIZE_CLASSES[size],
         COLOR_CLASSES[color],
         className,

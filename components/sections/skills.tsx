@@ -35,7 +35,7 @@ export function SkillsSection() {
                     <button
                         type="button"
                         onClick={() => setExpanded((prev) => !prev)}
-                        className="flex items-center gap-2 rounded-full border border-white/10 bg-zinc-900/60 px-6 py-2.5 text-sm font-medium text-zinc-300 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-zinc-900/80 hover:text-white"
+                        className="flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-6 py-2.5 text-sm font-medium text-zinc-600 backdrop-blur-sm transition-colors hover:border-black/20 hover:bg-white/80 hover:text-zinc-900 dark:border-white/10 dark:bg-zinc-900/60 dark:text-zinc-300 dark:hover:border-white/20 dark:hover:bg-zinc-900/80 dark:hover:text-white"
                     >
                         {expanded ? (
                             <>

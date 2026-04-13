@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Figtree, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_CONFIG } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -33,14 +34,17 @@ export default function RootLayout({
         <html
             lang="en"
             className={cn(
-                "dark h-full",
+                "h-full",
                 "antialiased",
                 geistSans.variable,
                 geistMono.variable,
                 figtree.variable,
             )}
+            suppressHydrationWarning
         >
-            <body className="flex min-h-full flex-col">{children}</body>
+            <body className="flex min-h-full flex-col">
+                <ThemeProvider>{children}</ThemeProvider>
+            </body>
         </html>
     );
 }
