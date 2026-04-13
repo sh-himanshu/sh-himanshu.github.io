@@ -10,6 +10,8 @@ import { fetchRepoReadme } from "@/lib/github";
 import { Github } from "@/lib/icons";
 import { getProjects } from "@/lib/projects";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
     const projects = await getProjects();
     return projects.map((p) => ({ slug: p.slug }));

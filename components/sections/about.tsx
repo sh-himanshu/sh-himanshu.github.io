@@ -13,39 +13,36 @@ export function AboutSection() {
         <Tile size="6x2" className="row-span-3 md:row-span-2">
             <div className="space-y-4">
                 <p className="text-lg leading-snug font-medium tracking-tight text-white sm:text-xl">
-                    Most developers start with code. I start with understanding
-                    what actually matters to users, then build for it.
+                    Frontend-focused <HighLight>Full-Stack Engineer</HighLight>{" "}
+                    with <HighLight>{exp}+ years</HighLight> building scalable,
+                    high-performance web applications.
                 </p>
 
                 <div className="space-y-3.5 text-[15px] leading-relaxed text-zinc-400 sm:text-base">
                     <p>
-                        Over <HighLight>{exp}+ years</HighLight>, I've shipped
-                        web, mobile, and desktop products across{" "}
-                        <HighLight>cleantech</HighLight> and{" "}
-                        <HighLight>B2B SaaS</HighLight>. I'm the person who
-                        simplifies messy systems, fixes what breaks at scale,
-                        and asks "why are we building this?" before "how?"
+                        Skilled in <HighLight>frontend architecture</HighLight>,{" "}
+                        <HighLight>
+                            Backend-for-Frontend (BFF) patterns
+                        </HighLight>
+                        , server-side rendering,{" "}
+                        <HighLight>AI/LLM integration</HighLight>, performance
+                        optimization, and automated testing. Proven track record
+                        of owning features end-to-end and shipping AI-driven
+                        products.
                     </p>
 
                     <p>
-                        At Birdeye, I build scalable frontend systems serving{" "}
-                        <HighLight>100,000+</HighLight> businesses with{" "}
+                        I've shipped products across{" "}
+                        <HighLight>cleantech</HighLight> and{" "}
+                        <HighLight>B2B SaaS</HighLight> — from multi-LLM
+                        orchestration systems powering{" "}
+                        <HighLight>10M+ social posts</HighLight> annually to
+                        platforms serving{" "}
+                        <HighLight>100,000+ businesses</HighLight>, using{" "}
                         <HighLight>
-                            React, TypeScript, and Redux Saga and Node.js
-                        </HighLight>{" "}
-                        while also working on the less visible but crucial parts
-                        like{" "}
-                        <HighLight>
-                            performance, security and system design
+                            JavaScript, React, Node.js, and Express
                         </HighLight>
                         .
-                    </p>
-
-                    <p>
-                        Pre-AI, good engineering was about clean code. Post-AI,
-                        it's about speed with clarity. I use AI to move faster
-                        without cutting corners, reviewing better, shipping
-                        smarter and operating with leverage.
                     </p>
 
                     <p className="text-zinc-300">

@@ -82,7 +82,7 @@ export const SITE_CONFIG = {
         "https://drive.google.com/uc?export=download&id=1vVL9G0t-H99QSifRNha-2yAJxGdVDuiL",
     availability: "OPEN TO WORK",
     description:
-        "Most developers start with code. I start with understanding what actually matters to users, then build for it.\n\nOver 4+ years, I've shipped web, mobile, and desktop products used by thousands across cleantech and B2B SaaS — including platforms now serving 100,000+ businesses.\n\nI'm the person who simplifies messy systems, fixes what breaks at scale, and asks \"why are we building this?\" before \"how?\"\n\nAt Birdeye, I build scalable frontend systems with React, TypeScript, and Redux Saga, along with the less visible work: performance tuning, secure architecture, and system design.\n\nPre-AI, good engineering was about clean code.\nPost-AI, it's about speed with clarity.\n\nI use AI to move faster without cutting corners — reviewing better, shipping smarter, and operating with leverage.\n\nOpen to roles involving scalable systems, AI-driven workflows, and products where engineering meets real business impact.\n\nLet's talk: reach out via the contact form.",
+        "Frontend-focused Full-Stack Engineer with 4+ years building scalable, high-performance web applications using JavaScript, React, Node.js, and Express.\n\nSkilled in frontend architecture, Backend-for-Frontend (BFF) patterns, server-side rendering, AI/LLM integration, performance optimization, and automated testing.\n\nProven track record of owning features end-to-end and shipping AI-driven products — from multi-LLM orchestration systems powering 10M+ social posts annually to platforms serving 100,000+ businesses.\n\nOpen to roles involving scalable systems, AI-driven workflows, and products where engineering meets real business impact.\n\nLet's talk: reach out via the contact form.",
 } as const;
 
 export const NAV_ITEMS: NavItem[] = [
@@ -184,12 +184,12 @@ export const EXPERIENCES: Experience[] = [
         period: "Jul 2024 - Present",
         gradient: "from-[#00a4ef] to-[#0078d4]",
         logo: "/images/logos/birdeye.jpg",
-        desc: "Building and scaling frontend systems for a SaaS platform serving over 100,000 businesses using React, TypeScript, and Redux Saga.",
+        desc: "Building scalable frontend systems and AI-powered features for a B2B SaaS platform serving 100,000+ businesses, contributing $6M+ in annual recurring revenue.",
         highlights: [
-            "Architecting reusable, performant component libraries for cross-team adoption.",
-            "Improving rendering performance and reducing layout shift in data-intensive dashboards.",
-            "Implementing secure data handling practices and frontend observability tooling.",
-            "Collaborating closely with backend and design teams to drive product quality.",
+            "Architected a multi-LLM orchestration system in Node.js/Express with async event-driven architecture, powering AI-driven content generation across 10M+ social posts annually.",
+            "Led a major UX overhaul of social engagement, built multi-format export (PDF/PNG/PPT), integrated TikTok support, and migrated monolith to micro-frontend with Module Federation.",
+            "Built a GitHub Actions code review workflow combining rule-based parsing with AI to detect recurring bugs and security issues, cutting regressions by 30%.",
+            "Resolved a CVSS 8.5 cross-origin vulnerability, patched session-hijacking flaws, and drove Google CASA compliance by remediating OWASP Top 10 findings across the platform.",
         ],
         technologies: [
             { label: "React", iconName: "Globe", brandColor: "#61dafb" },
@@ -205,12 +205,12 @@ export const EXPERIENCES: Experience[] = [
         period: "Sep 2022 - Jul 2024",
         gradient: "from-[#11998e] to-[#38ef7d]",
         logo: "/images/logos/oorjan.jpg",
-        desc: "Worked across multiple product lines building scalable solutions for the cleantech domain using React, React Native, TypeScript, and Node.js.",
+        desc: "Built scalable web and mobile products across multiple cleantech product lines, managing 300+ projects and driving 10K+ app downloads.",
         highlights: [
-            "Built a full-stack after-sales support platform (Greencare) with PostgreSQL, Hasura, S3, and SuperTokens auth.",
-            "Developed a cross-platform solar monitoring mobile app with React Native, Expo, Agora APIs, and Razorpay payments.",
-            "Migrated a Ghost CMS blog to a custom Next.js frontend, improving load speed and SEO.",
-            "Led development of a field survey tool, reducing manual data entry by ~60% through reusable form components.",
+            "Built a solar AMC management platform with OTP auth, role-based access, and automated notifications, managing 300+ projects and reducing resolution time by 40%.",
+            "Migrated Solar Monitoring App from Cordova to Ionic React with Redux and Highcharts for real-time energy monitoring, driving 10K+ downloads with Firebase analytics.",
+            "Migrated blog from WordPress to Next.js with SSG, Strapi CMS, GraphQL, and React Query, reducing load times by 40% and bounce rates by 60%.",
+            "Built a mobile survey app with Expo SDK, React Native, and Drizzle ORM; integrated native device APIs and shortest-path routing, increasing daily site coverage.",
         ],
         technologies: [
             { label: "React", iconName: "Globe", brandColor: "#61dafb" },
@@ -238,10 +238,10 @@ export const EXPERIENCES: Experience[] = [
         period: "Jan 2022 - May 2022",
         gradient: "from-[#f43b47] to-[#453a94]",
         logo: "/images/logos/raftlabs.jpg",
-        desc: "Contributed to frontend development across multiple client-facing SaaS products using React, TypeScript, and GraphQL.",
+        desc: "Developed frontend modules for client-facing SaaS products across healthcare and remote work, serving 150+ hospitals and 50+ clinics.",
         highlights: [
-            "Built a HIPAA-compliant telehealth platform with real-time video (Agora SDK), role-based access, and encrypted communication.",
-            "Developed core UI modules for a hybrid remote-work platform including dashboards, seat booking, and notification workflows.",
+            "Built core modules — patient dashboard, appointment scheduling, and real-time video consultations using Agora.io SDK for a HIPAA-compliant telehealth platform, lifting patient engagement by 30%.",
+            "Developed a hybrid remote-work platform using React and Electron; built immersive 3D meeting rooms and dynamic 2D virtual offices with Konva.js, and integrated multi-cloud storage (AWS S3, Google Drive, Dropbox).",
         ],
         technologies: [
             { label: "React", iconName: "Globe", brandColor: "#61dafb" },
