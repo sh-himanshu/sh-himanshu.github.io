@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 const RESUME_URL =
-    "https://drive.google.com/file/d/1HNx8Np1vqd-jLSQA8NtIrmyuuK82luDw/view?usp=drive_link";
+    "https://drive.google.com/file/d/1z25g_YtDveVP9LJhLMH5ikEJeAXFKjhS/view?usp=sharing";
 
 export default function ResumePage() {
     useEffect(() => {

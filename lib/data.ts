@@ -79,7 +79,7 @@ export const SITE_CONFIG = {
     email: "aGltYW5zaHUuc2gxMjIwQGdtYWlsLmNvbQ==",
     phone: "KzkxIDgwNTgwMDk0MTU=",
     resumeUrl:
-        "https://drive.google.com/uc?export=download&id=1vVL9G0t-H99QSifRNha-2yAJxGdVDuiL",
+        "https://drive.google.com/file/d/1z25g_YtDveVP9LJhLMH5ikEJeAXFKjhS/view?usp=sharing",
     availability: "OPEN TO WORK",
     description:
         "Frontend-focused Full-Stack Engineer with 4+ years building scalable, high-performance web applications using JavaScript, React, Node.js, and Express.\n\nSkilled in frontend architecture, Backend-for-Frontend (BFF) patterns, server-side rendering, AI/LLM integration, performance optimization, and automated testing.\n\nProven track record of owning features end-to-end and shipping AI-driven products — from multi-LLM orchestration systems powering 10M+ social posts annually to platforms serving 100,000+ businesses.\n\nOpen to roles involving scalable systems, AI-driven workflows, and products where engineering meets real business impact.\n\nLet's talk: reach out via the contact form.",
