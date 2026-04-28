@@ -1,14 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-
-const RESUME_URL =
-    "https://drive.google.com/file/d/1z25g_YtDveVP9LJhLMH5ikEJeAXFKjhS/view?usp=sharing";
+import { SITE_CONFIG } from '@/lib/data';
+import { useEffect } from 'react';
 
 export default function ResumePage() {
-    useEffect(() => {
-        window.location.href = RESUME_URL;
-    }, []);
+  useEffect(() => {
+    window.location.href = SITE_CONFIG.resumeUrl;
+  }, []);
 
-    return null;
+  return null;
 }
