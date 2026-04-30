@@ -42,15 +42,6 @@ export default async function Home() {
                         <AboutSection />
                     </PageSection>
 
-                    <PageSection
-                        id="projects"
-                        title="Projects"
-                        number="02"
-                        gridClassName="!grid-cols-1 !auto-rows-auto md:!grid-cols-2 lg:!grid-cols-3"
-                    >
-                        <ProjectsSection projects={projects} />
-                    </PageSection>
-
                     <ExperienceExpandedProvider>
                         <PageSection
                             id="experience"
@@ -61,6 +52,15 @@ export default async function Home() {
                         </PageSection>
                         <ExperienceToggle />
                     </ExperienceExpandedProvider>
+
+                    <PageSection
+                        id="projects"
+                        title="Projects"
+                        number="02"
+                        gridClassName="!grid-cols-1 !auto-rows-auto md:!grid-cols-2 lg:!grid-cols-3"
+                    >
+                        <ProjectsSection projects={projects} />
+                    </PageSection>
 
                     <PageSection id="contact" title="Contact" number="04">
                         <ContactSection />
