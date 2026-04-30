@@ -57,8 +57,7 @@ export function HeroSection() {
                                 />
                             </a>
                             <a
-                                href={SITE_CONFIG.resumeUrl}
-                                download
+                                href="/resume"
                                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/[0.1] bg-black/[0.04] px-7 py-3 text-[15px] font-medium text-zinc-700 transition-all duration-200 hover:border-black/[0.18] hover:bg-black/[0.08] hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-[var(--accent-muted)]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--ring-offset)] focus-visible:outline-none sm:w-auto dark:border-white/[0.12] dark:bg-white/[0.06] dark:text-zinc-200 dark:hover:border-white/[0.22] dark:hover:bg-white/[0.12] dark:hover:text-white"
                             >
                                 <Download size={16} /> Resume

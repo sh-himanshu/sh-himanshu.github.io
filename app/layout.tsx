@@ -41,6 +41,7 @@ export default function RootLayout({
                 figtree.variable,
             )}
             suppressHydrationWarning
+            data-scroll-behavior="smooth"
         >
             <body className="flex min-h-full flex-col">
                 <ThemeProvider>{children}</ThemeProvider>
