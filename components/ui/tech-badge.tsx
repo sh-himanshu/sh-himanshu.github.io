@@ -1,9 +1,9 @@
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 interface TechBadgeProps {
     label: string;
-    icon?: LucideIcon;
+    icon?: AppIcon;
     brandColor?: string;
     className?: string;
 }

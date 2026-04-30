@@ -1,8 +1,8 @@
-import type { LucideIcon } from "lucide-react";
+import type { AppIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 interface MetroIconProps {
-    icon: LucideIcon;
+    icon: AppIcon;
     gradient: string;
 }
 

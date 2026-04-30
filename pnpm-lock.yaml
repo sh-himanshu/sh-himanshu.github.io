@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@thesvg/react':
+        specifier: ^2.1.6
+        version: 2.1.6(react@19.2.4)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1002,6 +1005,12 @@ packages:
 
   '@tailwindcss/postcss@4.2.1':
     resolution: {integrity: sha512-OEwGIBnXnj7zJeonOh6ZG9woofIjGrd2BORfvE5p9USYKDCZoQmfqLcfNiRWoJlRWLdNPn2IgVZuWAOM4iTYMw==}
+
+  '@thesvg/react@2.1.6':
+    resolution: {integrity: sha512-XKbMndmkS3a8werh8F/Y4QO/XOKr14OB7QaLL13qwmHziefrAKIcnLEZvcOrLXnC1bW4deZRuQSEBy1q3oED7A==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      react: '>=18'
 
   '@ts-morph/common@0.27.0':
     resolution: {integrity: sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ==}
@@ -3931,6 +3940,10 @@ snapshots:
       '@tailwindcss/oxide': 4.2.1
       postcss: 8.5.8
       tailwindcss: 4.2.1
+
+  '@thesvg/react@2.1.6(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
 
   '@ts-morph/common@0.27.0':
     dependencies:

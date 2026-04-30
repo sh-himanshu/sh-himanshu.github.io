@@ -54,7 +54,6 @@ export interface Experience {
     gradient: string;
     logo?: string;
     desc: string;
-    highlights: string[];
     technologies: ExperienceTech[];
 }
 
@@ -79,7 +78,7 @@ export const SITE_CONFIG = {
     email: "aGltYW5zaHUuc2gxMjIwQGdtYWlsLmNvbQ==",
     phone: "KzkxIDgwNTgwMDk0MTU=",
     resumeUrl:
-        "https://drive.google.com/file/d/1XKRV9VYyTcVfL54lCX3Ln0LxH-GcPgrF",
+        "https://drive.usercontent.google.com/u/0/uc?id=1SrwHnR1LOLkworK90KpgFf4fZ3PGXloM&export=download",
     availability: "OPEN TO WORK",
     description:
         "Frontend-focused Full-Stack Engineer with 4+ years building scalable, high-performance web applications using JavaScript, React, Node.js, and Express.\n\nSkilled in frontend architecture, Backend-for-Frontend (BFF) patterns, server-side rendering, AI/LLM integration, performance optimization, and automated testing.\n\nProven track record of owning features end-to-end and shipping AI-driven products — from multi-LLM orchestration systems powering 10M+ social posts annually to platforms serving 100,000+ businesses.\n\nOpen to roles involving scalable systems, AI-driven workflows, and products where engineering meets real business impact.\n\nLet's talk: reach out via the contact form.",
@@ -141,7 +140,7 @@ export const SKILLS: Skill[] = [
     },
     {
         id: "node-api",
-        name: "Node.js & API",
+        name: "Node.js & Express",
         iconName: "Database",
         size: "2x1",
         gradient: "from-[#11998e] to-[#38ef7d]",
@@ -154,9 +153,9 @@ export const SKILLS: Skill[] = [
         gradient: "from-[#bc4e9c] to-[#f80759]",
     },
     {
-        id: "graphql",
-        name: "GraphQL & Hasura",
-        iconName: "Database",
+        id: "genai-llms",
+        name: "GenAI & LLMs",
+        iconName: "Bot",
         size: "2x1",
         gradient: "from-[#e535ab] to-[#1eb4d4]",
     },
@@ -169,7 +168,7 @@ export const SKILLS: Skill[] = [
     },
     {
         id: "redux",
-        name: "Redux & State Mgmt",
+        name: "Redux & Zustand",
         iconName: "Layers",
         size: "2x1",
         gradient: "from-[#764abc] to-[#593d88]",
@@ -184,18 +183,40 @@ export const EXPERIENCES: Experience[] = [
         period: "Jul 2024 - Present",
         gradient: "from-[#00a4ef] to-[#0078d4]",
         logo: "/images/logos/birdeye.jpg",
-        desc: "Building scalable frontend systems and AI-powered features for a B2B SaaS platform serving 100,000+ businesses, contributing $6M+ in annual recurring revenue.",
-        highlights: [
-            "Architected a multi-LLM orchestration system in Node.js/Express with async event-driven architecture, powering AI-driven content generation across 10M+ social posts annually.",
-            "Led a major UX overhaul of social engagement, built multi-format export (PDF/PNG/PPT), integrated TikTok support, and migrated monolith to micro-frontend with Module Federation.",
-            "Built a GitHub Actions code review workflow combining rule-based parsing with AI to detect recurring bugs and security issues, cutting regressions by 30%.",
-            "Resolved a CVSS 8.5 cross-origin vulnerability, patched session-hijacking flaws, and drove Google CASA compliance by remediating OWASP Top 10 findings across the platform.",
-        ],
+        desc: "Birdeye is a B2B SaaS platform that helps **100,000+ businesses** manage their online reputation, social media, and customer experience from a single dashboard. I work on the social product, where the core challenge is enabling businesses to create, schedule, and publish content at massive scale across channels. I've built **AI-powered content generation pipelines** using multi-LLM orchestration, media processing microservices with Sharp, FFmpeg, and S3 achieving up to **70% size reduction** and **~3x faster uploads**, and **micro-frontend architectures** using Webpack Module Federation that power **10M+ social posts annually**, contributing **$4M+ in ARR**. I also strengthened client-side security by remediating a **CVSS 8.5 cross-origin vulnerability**, upgrading **70+ vulnerable npm packages**, and achieving **Google CASA compliance**.",
         technologies: [
-            { label: "React", iconName: "Globe", brandColor: "#61dafb" },
-            { label: "TypeScript", iconName: "Code", brandColor: "#3178c6" },
-            { label: "Redux Saga", iconName: "Layers", brandColor: "#764abc" },
-            { label: "JavaScript", iconName: "Code", brandColor: "#f7df1e" },
+            { label: "React", iconName: "SiReact", brandColor: "#61dafb" },
+            {
+                label: "TypeScript",
+                iconName: "SiTypescript",
+                brandColor: "#3178c6",
+            },
+            {
+                label: "JavaScript",
+                iconName: "SiJavascript",
+                brandColor: "#f7df1e",
+            },
+            {
+                label: "Node.js",
+                iconName: "SiNodedotjs",
+                brandColor: "#5fa04e",
+            },
+            { label: "Express", iconName: "SiExpress", brandColor: "#ffffff" },
+            { label: "NestJS", iconName: "SiNestjs", brandColor: "#e0234e" },
+            { label: "Redux Saga", iconName: "SiRedux", brandColor: "#764abc" },
+            { label: "Webpack", iconName: "SiWebpack", brandColor: "#8dd6f9" },
+            { label: "AWS S3", iconName: "SiAmazons3", brandColor: "#ff9900" },
+            { label: "FFmpeg", iconName: "SiFFmpeg", brandColor: "#007808" },
+            {
+                label: "Puppeteer",
+                iconName: "SiPuppeteer",
+                brandColor: "#40b5a4",
+            },
+            {
+                label: "GitHub Actions",
+                iconName: "SiGithubactions",
+                brandColor: "#2088ff",
+            },
         ],
     },
     {
@@ -205,30 +226,44 @@ export const EXPERIENCES: Experience[] = [
         period: "Sep 2022 - Jul 2024",
         gradient: "from-[#11998e] to-[#38ef7d]",
         logo: "/images/logos/oorjan.jpg",
-        desc: "Built scalable web and mobile products across multiple cleantech product lines, managing 300+ projects and driving 10K+ app downloads.",
-        highlights: [
-            "Built a solar AMC management platform with OTP auth, role-based access, and automated notifications, managing 300+ projects and reducing resolution time by 40%.",
-            "Migrated Solar Monitoring App from Cordova to Ionic React with Redux and Highcharts for real-time energy monitoring, driving 10K+ downloads with Firebase analytics.",
-            "Migrated blog from WordPress to Next.js with SSG, Strapi CMS, GraphQL, and React Query, reducing load times by 40% and bounce rates by 60%.",
-            "Built a mobile survey app with Expo SDK, React Native, and Drizzle ORM; integrated native device APIs and shortest-path routing, increasing daily site coverage.",
-        ],
+        desc: "Oorjan is a cleantech company providing solar energy solutions across residential and commercial segments in India. The engineering challenge was replacing fragmented manual workflows with unified digital products. I built an **AMC management platform** with OTP auth, role-based access, and automated notifications handling **300+ projects** and reducing resolution time by **40%**. Migrated the legacy Cordova monitoring app to **Ionic React** with Highcharts for real-time energy analytics, driving **10K+ downloads**. I also migrated the company blog from WordPress to **Next.js with SSG**, Strapi CMS, and GraphQL, cutting load times by **40%** and bounce rates by **60%**, and built mobile-first field survey tooling with Expo and React Native that increased daily site coverage.",
         technologies: [
-            { label: "React", iconName: "Globe", brandColor: "#61dafb" },
+            { label: "React", iconName: "SiReact", brandColor: "#61dafb" },
             {
                 label: "React Native",
-                iconName: "Smartphone",
+                iconName: "SiReact",
                 brandColor: "#61dafb",
             },
-            { label: "TypeScript", iconName: "Code", brandColor: "#3178c6" },
-            { label: "Node.js", iconName: "Terminal", brandColor: "#5fa04e" },
+            {
+                label: "TypeScript",
+                iconName: "SiTypescript",
+                brandColor: "#3178c6",
+            },
+            {
+                label: "Next.js",
+                iconName: "SiNextdotjs",
+                brandColor: "#ffffff",
+            },
+            {
+                label: "Node.js",
+                iconName: "SiNodedotjs",
+                brandColor: "#5fa04e",
+            },
+            { label: "GraphQL", iconName: "SiGraphql", brandColor: "#e535ab" },
             {
                 label: "PostgreSQL",
-                iconName: "Database",
+                iconName: "SiPostgresql",
                 brandColor: "#336791",
             },
-            { label: "Hasura", iconName: "Database", brandColor: "#1eb4d4" },
-            { label: "Next.js", iconName: "Globe", brandColor: "#ffffff" },
-            { label: "Expo", iconName: "Smartphone", brandColor: "#000020" },
+            { label: "Hasura", iconName: "SiHasura", brandColor: "#1eb4d4" },
+            { label: "Ionic", iconName: "SiIonic", brandColor: "#3880ff" },
+            {
+                label: "Firebase",
+                iconName: "SiFirebase",
+                brandColor: "#ffca28",
+            },
+            { label: "Expo", iconName: "SiExpo", brandColor: "#000020" },
+            { label: "Strapi", iconName: "SiStrapi", brandColor: "#4945ff" },
         ],
     },
     {
@@ -238,16 +273,24 @@ export const EXPERIENCES: Experience[] = [
         period: "Jan 2022 - May 2022",
         gradient: "from-[#f43b47] to-[#453a94]",
         logo: "/images/logos/raftlabs.jpg",
-        desc: "Developed frontend modules for client-facing SaaS products across healthcare and remote work, serving 150+ hospitals and 50+ clinics.",
-        highlights: [
-            "Built core modules — patient dashboard, appointment scheduling, and real-time video consultations using Agora.io SDK for a HIPAA-compliant telehealth platform, lifting patient engagement by 30%.",
-            "Developed a hybrid remote-work platform using React and Electron; built immersive 3D meeting rooms and dynamic 2D virtual offices with Konva.js, and integrated multi-cloud storage (AWS S3, Google Drive, Dropbox).",
-        ],
+        desc: "RaftLabs is a product studio that builds client-facing SaaS products across healthcare and remote work. I worked on a **HIPAA-compliant telehealth platform** serving **150+ hospitals** and **50+ clinics**, building core modules like patient dashboards, appointment scheduling, and real-time video consultations using Agora.io SDK that lifted patient engagement by **30%**. I also developed a **hybrid remote-work platform** with immersive 3D meeting rooms and dynamic 2D virtual offices using Konva.js, implemented native desktop features like system tray, notifications, and file management via **Electron**, and integrated **multi-cloud storage** across AWS S3, Google Drive, and Dropbox to consolidate distributed team assets into a single access point.",
         technologies: [
-            { label: "React", iconName: "Globe", brandColor: "#61dafb" },
-            { label: "TypeScript", iconName: "Code", brandColor: "#3178c6" },
-            { label: "GraphQL", iconName: "Database", brandColor: "#e535ab" },
-            { label: "Agora SDK" },
+            { label: "React", iconName: "SiReact", brandColor: "#61dafb" },
+            {
+                label: "TypeScript",
+                iconName: "SiTypescript",
+                brandColor: "#3178c6",
+            },
+            {
+                label: "Electron",
+                iconName: "SiElectron",
+                brandColor: "#47848f",
+            },
+            { label: "GraphQL", iconName: "SiGraphql", brandColor: "#e535ab" },
+            { label: "Konva.js", iconName: "SiKonva", brandColor: "#0d83cd" },
+            { label: "Agora SDK", brandColor: "#099dfd" },
+            { label: "AWS S3", iconName: "SiAmazons3", brandColor: "#ff9900" },
+            { label: "Redux", iconName: "SiRedux", brandColor: "#764abc" },
         ],
     },
 ];

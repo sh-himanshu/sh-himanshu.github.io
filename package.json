@@ -27,6 +27,7 @@
         ]
     },
     "dependencies": {
+        "@thesvg/react": "^2.1.6",
         "clsx": "^2.1.1",
         "lucide-react": "^1.6.0",
         "next": "16.2.1",

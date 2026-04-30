@@ -42,7 +42,7 @@ export function HeroSection() {
                         </h1>
 
                         <h2 className="mt-2 text-lg leading-tight font-medium tracking-tight text-zinc-500 dark:text-zinc-400 sm:text-xl md:mt-3 lg:text-2xl">
-                            Senior Full-Stack Developer
+                            Frontend-focused Full-Stack Engineer
                         </h2>
 
                         <div className="mt-6 flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center md:mt-8 md:justify-start">
@@ -99,7 +99,11 @@ export function HeroSection() {
                     >
                         <Icon
                             size={44}
-                            className="my-auto drop-shadow-md transition-transform duration-300 ease-out group-hover:scale-110"
+                            className={
+                                link.id === "x"
+                                    ? "my-auto drop-shadow-md transition-transform duration-300 ease-out group-hover:scale-110 [&_*]:fill-zinc-900 dark:[&_*]:fill-white"
+                                    : "my-auto drop-shadow-md transition-transform duration-300 ease-out group-hover:scale-110"
+                            }
                         />
                     </Tile>
                 );

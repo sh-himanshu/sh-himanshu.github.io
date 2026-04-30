@@ -1,45 +1,9 @@
 import type { ReactNode } from "react";
 
-const TECH_KEYWORDS = [
-    "Redux Saga",
-    "React Native",
-    "Agora APIs",
-    "Agora SDK",
-    "SuperTokens",
-    "TypeScript",
-    "JavaScript",
-    "PostgreSQL",
-    "Ghost CMS",
-    "Razorpay",
-    "GraphQL",
-    "Node.js",
-    "Next.js",
-    "Hasura",
-    "React",
-    "HIPAA",
-    "Redux",
-    "Expo",
-    "SaaS",
-    "S3",
-];
-
-function buildHighlightRegex(): RegExp {
-    const escaped = TECH_KEYWORDS.map((k) => {
-        const esc = k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        // Use word boundary at start; only add trailing \b if term ends with a word char
-        if (/\w$/.test(k)) return `\\b${esc}\\b`;
-        return `\\b${esc}`;
-    });
-    // Metric pattern: optional ~, digits with commas, optional +, optional %
-    const metricPattern = "~?\\d[\\d,]*\\+?%?";
-    const combined = [...escaped, metricPattern].join("|");
-    return new RegExp(`(${combined})`, "g");
-}
-
-const HIGHLIGHT_REGEX = buildHighlightRegex();
+const BOLD_REGEX = /\*\*(.+?)\*\*/g;
 
 export function highlightText(text: string): ReactNode {
-    const parts = text.split(HIGHLIGHT_REGEX);
+    const parts = text.split(BOLD_REGEX);
 
     if (parts.length === 1) return text;
 
@@ -49,8 +13,8 @@ export function highlightText(text: string): ReactNode {
         if (i % 2 === 1) {
             result.push(
                 <strong
-                    key={part}
-                    className="font-semibold text-zinc-900 dark:text-white"
+                    key={`${i}-${part}`}
+                    className="font-semibold text-zinc-800 dark:text-zinc-100"
                 >
                     {part}
                 </strong>,

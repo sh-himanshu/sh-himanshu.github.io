@@ -19,7 +19,10 @@ export function AboutSection() {
                 <p className="text-lg leading-snug font-medium tracking-tight text-zinc-900 dark:text-white sm:text-xl">
                     Frontend-focused <HighLight>Full-Stack Engineer</HighLight>{" "}
                     with <HighLight>{exp}+ years</HighLight> building scalable,
-                    high-performance web applications.
+                    high-performance web applications using{" "}
+                    <HighLight>JavaScript</HighLight>,{" "}
+                    <HighLight>React</HighLight>, <HighLight>Node.js</HighLight>{" "}
+                    and <HighLight>Express</HighLight>.
                 </p>
 
                 <div className="space-y-3.5 text-[15px] leading-relaxed text-zinc-500 dark:text-zinc-400 sm:text-base">
@@ -29,24 +32,20 @@ export function AboutSection() {
                             Backend-for-Frontend (BFF) patterns
                         </HighLight>
                         , server-side rendering,{" "}
-                        <HighLight>AI/LLM integration</HighLight>, performance
+                        <HighLight>LLM integration</HighLight>, performance
                         optimization, and automated testing. Proven track record
-                        of owning features end-to-end and shipping AI-driven
-                        products.
+                        of owning features end-to-end and shipping{" "}
+                        <HighLight>AI-driven products</HighLight>.
                     </p>
 
                     <p>
                         I've shipped products across{" "}
                         <HighLight>cleantech</HighLight> and{" "}
-                        <HighLight>B2B SaaS</HighLight> — from multi-LLM
+                        <HighLight>B2B SaaS</HighLight>, from multi-LLM
                         orchestration systems powering{" "}
                         <HighLight>10M+ social posts</HighLight> annually to
                         platforms serving{" "}
-                        <HighLight>100,000+ businesses</HighLight>, using{" "}
-                        <HighLight>
-                            JavaScript, React, Node.js, and Express
-                        </HighLight>
-                        .
+                        <HighLight>100,000+ businesses</HighLight>.
                     </p>
 
                     <p className="text-zinc-600 dark:text-zinc-300">

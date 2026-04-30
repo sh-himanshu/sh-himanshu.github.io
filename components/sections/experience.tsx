@@ -95,26 +95,6 @@ export function ExperienceCards() {
                                 <p className="mb-4 max-w-3xl text-[15px] leading-relaxed text-pretty text-zinc-600/80 dark:text-zinc-300/80">
                                     {highlightText(exp.desc)}
                                 </p>
-                                <ul className="space-y-2.5">
-                                    {exp.highlights.map((item) => (
-                                        <li
-                                            key={item}
-                                            className="flex items-start gap-3 text-[13.5px] text-zinc-500 dark:text-zinc-400 sm:text-[14px]"
-                                        >
-                                            <div
-                                                className={cn(
-                                                    "mt-[7px] size-1.5 shrink-0 rounded-full shadow-[0_0_6px_currentColor]",
-                                                    isCurrent
-                                                        ? "bg-[var(--accent)] text-[var(--accent)]"
-                                                        : "bg-zinc-500 text-zinc-500",
-                                                )}
-                                            />
-                                            <span className="leading-relaxed">
-                                                {highlightText(item)}
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
 
                                 {exp.technologies.length > 0 && (
                                     <div className="mt-5 flex flex-wrap gap-1.5">
